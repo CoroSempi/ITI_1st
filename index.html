@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./Styles/layouts.css" />
+    <link rel="stylesheet" href="./Styles/home.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,24 +17,24 @@
     <!-- Header ---------------------------------------------------->
     <header>
       <!-- logo -->
-      <img src="./Assets/LOGO.png" height="50px" alt="" />
+      <img src="./Assets/LOGO.png" height="50px" alt="ITI Market Logo" />
       <!-- searchBar -->
       <div id="searchBar">
-        <input placeholder="Serach" type="text" />
+        <input type="search" placeholder="Search" />
         <img src="./Assets/search.png" />
       </div>
       <!-- headrActions -->
       <div id="headrActions">
         <span id="cartCounter">1</span>
         <a href="./Pages/cart.html">
-          <img src="./Assets/cart.png" alt="profile" />
+          <img src="./Assets/cart.png" alt="Cart" />
         </a>
 
         <a href="./Pages/profile.html">
-          <img src="./Assets/profile.png" alt="profile" />
+          <img src="./Assets/profile.png" alt="Profile" />
         </a>
 
-        <a href="./Pages/signIn.html">LogOut</a>
+        <a href="./Pages/signIn.html">Log Out</a>
       </div>
     </header>
     <!-------------------------------------------------------------->
@@ -47,17 +49,30 @@
     <!-------------------------------------------------------------->
 
     <main>
-      dfdsadfdsafdfsdads
-      <!-- backgroubd -->
-      <img id="bg" src="./Assets/BG.png" />
+      <!-- background -->
+      <img id="bg" src="./Assets/BG.png" alt="Background Image" />
+      <!---->
+      <!-- products -->
+      <div id="Top">
+        <img
+          id="TopCover"
+          src="./Assets/Promotion Image.png"
+          alt="Promotion Image" />
+        <div id="TopTitle">
+          <span>Top in ITI Market</span>
+          <span style="font-size: 25px">Super Flash Sale 50% Off</span>
+        </div>
+
+        <div id="topContainer"></div>
+      </div>
     </main>
 
     <!-- Footer ---------------------------------------------------->
     <footer>
       <div>
-        <img src="./Assets/FooterLOGO.png" width="130px" />
+        <img src="./Assets/FooterLOGO.png" width="130px" alt="Footer Logo" />
         <p>
-          Welcome to ITI Market, your premier destination for all things tech!
+          Welcome to ITI Market, your premier destination for all things tech!
           Our e-commerce website is designed with a focus on delivering an
           exceptional user experience, featuring a sleek and modern user
           interface that makes shopping for your favorite tech devices
@@ -65,11 +80,12 @@
         </p>
         <img
           src="./Assets/customerService.png"
-          alt="customerService"
+          alt="Customer Service"
           width="30px" />
       </div>
-      <p>© 2023-2024 by ITIMarket.com</p>
+      <p>&copy; 2023-2024 by ITIMarket.com</p>
     </footer>
     <!-------------------------------------------------------------->
   </body>
+  <script src="./Scripts/HomeTopCard.js"></script>
 </html>
