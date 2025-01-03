@@ -1,0 +1,158 @@
+body {
+  margin: 0;
+  font-family: "poppins", sans-serif;
+}
+header {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  padding: 5px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+}
+
+#searchBar {
+  width: 40%;
+  max-width: 500px;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#searchBar input {
+  width: 100%;
+  height: 40px;
+  border-radius: 20px;
+  border: rgb(246, 203, 205) solid 0.1px;
+  background-color: #fafafa;
+  padding: 0px 10px;
+  font-weight: 500;
+}
+
+#searchBar img {
+  width: 30px;
+  position: absolute;
+  top: 7px;
+  right: 10px;
+}
+
+#headrActions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+#headrActions img {
+  width: 35px;
+  cursor: pointer;
+}
+
+#headrActions a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #c3262d;
+  font-size: 19px;
+  transition: color 0.2s ease;
+}
+
+#headrActions a:hover {
+  color: #8b0a1a;
+}
+
+#cartCounter {
+  color: white;
+  background-color: #c3262d;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 3px 7px;
+  box-sizing: border-box;
+  border-radius: 100px;
+  position: absolute;
+  left: -5px;
+  top: -1px;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #c3262d;
+  opacity: 0.5;
+  transition: all 0.2s ease;
+}
+
+nav a:hover {
+  scale: 1.2;
+  opacity: 0.8;
+}
+
+.selected {
+  opacity: 1;
+  font-weight: 800;
+}
+
+main {
+  min-height: 70vh;
+  margin-bottom: 40px;
+}
+
+#bg {
+  position: fixed;
+  top: 180px;
+  left: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+footer {
+  color: white;
+  background-color: #9c1e24;
+  padding: 10px 20px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+footer div p {
+  max-width: 800px;
+  font-size: 14px;
+}
+
+footer div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding: 10px;
+  }
+  footer div p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  footer {
+    padding: 5px;
+  }
+  footer div p {
+    font-size: 10px;
+  }
+}
