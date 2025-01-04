@@ -1,11 +1,15 @@
+/* Global Styles */
+
 * {
   padding: 0px;
   margin: 0px;
 }
 
+/* Top Section Styles */
+
 #Top {
   position: relative;
-  height: 900px;
+  height: 820px;
 }
 
 #TopTitle {
@@ -34,8 +38,9 @@
   gap: 40px;
   position: absolute;
   top: 220px;
-  /* overflow: auto; */
 }
+
+/* Home Card Styles */
 
 .homeCard {
   box-sizing: border-box;
@@ -130,4 +135,122 @@
   font-size: 20px;
   font-weight: 500;
   opacity: 0.5;
+}
+
+/* Latest Card Styles */
+
+.latestCard {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  background-color: white;
+  border-radius: 20px;
+  box-sizing: border-box;
+  min-width: 300px;
+  max-width: 300px;
+  min-height: 500px;
+  max-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #2c2c2c;
+  transition: all 0.5s;
+  padding: 10px;
+}
+
+.latestCard:hover {
+  scale: 1.03;
+}
+
+.latestCard_Thumb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.latestCard_Top {
+  display: flex;
+  font-size: 18px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 520;
+}
+
+.latestCard span {
+  max-height: 30px;
+  overflow: hidden;
+}
+
+.latestCard_OverView {
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.latestCard_BrandCategoryStock {
+  overflow: hidden;
+  height: 20px;
+  font-size: 14px;
+  gap: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-weight: 500;
+}
+
+.latestCard_AddToCart {
+  color: white;
+  padding: 10px 30px;
+  font-weight: 550;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 20px;
+  border: none;
+  transition: all 0.5s;
+  background-color: #c3262d;
+  width: 100%;
+}
+
+.latestCard_AddToCart:hover {
+  background-color: #7f1116;
+}
+
+#latestProducts {
+  position: relative;
+  overflow: hidden;
+}
+#latestContainer {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+}
+
+#latestTag {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.arrow {
+  background: none;
+  border: none;
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.left-arrow {
+  top: 45%;
+  left: 10px;
+}
+
+.right-arrow {
+  top: 45%;
+  right: 10px;
 }

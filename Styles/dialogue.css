@@ -1,0 +1,83 @@
+.BackDark {
+  background-color: rgba(14, 13, 13, 0.6);
+  width: 100vw;
+  height: 100vh;
+  display: NONE;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+
+.CartDialogue {
+  background-color: white;
+  padding: 30px 20px;
+  width: 50%;
+  max-width: 400px;
+  border-radius: 20px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgb(221, 220, 220);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.CartDialogue_Bg {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.CartDialogue_title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.CartDialogue_text {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 500;
+  color: rgb(133, 122, 122);
+  margin-bottom: 20px;
+}
+
+.CartDialogue button {
+  border: none;
+  background-color: #c3262d;
+  color: white;
+  width: 90%;
+  padding: 15px;
+  font-weight: 600;
+  border-radius: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s ease-in-out;
+  z-index: 10;
+}
+
+.CartDialogue button:hover {
+  background-color: #781217;
+  transform: scale(1.05);
+}
+
+.BackDark2 {
+  background-color: rgba(14, 13, 13, 0.6);
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}

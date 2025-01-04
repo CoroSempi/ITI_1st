@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./Styles/layouts.css" />
     <link rel="stylesheet" href="./Styles/home.css" />
+    <link rel="stylesheet" href="./Styles/dialogue.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,6 +15,36 @@
     <title>ITI Market</title>
   </head>
   <body>
+    <!-- CartDialogue----------------------------->
+    <div class="BackDark">
+      <div class="CartDialogue">
+        <img class="CartDialogue_Bg" src="./Assets/dialogueBg.png" />
+        <p class="CartDialogue_title">Item Added to Cart Successfully!</p>
+        <p class="CartDialogue_text">
+          Your selection is now safe and sound in your cart. Ready to check out
+          or continue shopping?
+        </p>
+        <img class="CartDialogue_icon" src="./Assets/CartDialogueIcon.png" />
+        <button id="yourCart">Your Cart</button>
+      </div>
+    </div>
+    <!---------------------------------------------->
+
+    <!-- SignInDialogue----------------------------->
+    <div class="BackDark2">
+      <div class="CartDialogue">
+        <img class="CartDialogue_Bg" src="./Assets/dialogueBg.png" />
+        <p class="CartDialogue_title">Please sign in first</p>
+        <p class="CartDialogue_text">
+          Sign in for a seamless experience! Enjoy custom recommendations and
+          exclusive benefits.
+        </p>
+        <img class="CartDialogue_icon" src="./Assets/SignDialogueIcon.png" />
+        <button id="yourCart">Sign In</button>
+      </div>
+    </div>
+    <!---------------------------------------------->
+
     <!-- Header ---------------------------------------------------->
     <header>
       <!-- logo -->
@@ -54,16 +85,30 @@
       <!---->
       <!-- products -->
       <div id="Top">
-        <img
-          id="TopCover"
-          src="./Assets/Promotion Image.png"
-          alt="Promotion Image" />
+        <img id="TopCover" src="./Assets/home2.png" alt="Promotion Image" />
         <div id="TopTitle">
           <span>Top in ITI Market</span>
           <span style="font-size: 25px">Super Flash Sale 50% Off</span>
         </div>
-
         <div id="topContainer"></div>
+      </div>
+
+      <!-- Latest section -->
+      <div style="padding: 20px">
+        <div id="latestTag">
+          <img height="40px" src="./Assets/tag.png" alt="" />
+          <p>Latest Offers</p>
+        </div>
+
+        <div id="latestProducts">
+          <button class="arrow left-arrow" onclick="moveSlide(-1)">
+            <img src="./Assets/left.png" />
+          </button>
+          <div id="latestContainer"></div>
+          <button class="arrow right-arrow" onclick="moveSlide(1)">
+            <img src="./Assets/right.png" />
+          </button>
+        </div>
       </div>
     </main>
 
@@ -87,5 +132,7 @@
     </footer>
     <!-------------------------------------------------------------->
   </body>
+  <script src="./Scripts/Dialogue.js"></script>
   <script src="./Scripts/HomeTopCard.js"></script>
+  <script src="./Scripts/HomeLatestSlider.js"></script>
 </html>

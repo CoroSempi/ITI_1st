@@ -10,7 +10,6 @@ req.addEventListener("readystatechange", () => {
     data = JSON.parse(req.response);
     data = data.products;
     for (let i = 0; i < data.length; i++) {
-      console.log(data[i]);
       const homeCard = document.createElement("div");
       homeCard.classList.add("homeCard");
       const homeCardThumb = document.createElement("div");
@@ -59,6 +58,9 @@ req.addEventListener("readystatechange", () => {
       const homeCardBottom = document.createElement("div");
       homeCardBottom.classList.add("homeCard_bottom");
       const homeCardAddToCart = document.createElement("button");
+      homeCardAddToCart.addEventListener("click", () => {
+        SignDialogue();
+      });
       homeCardAddToCart.classList.add("homeCard_AddToCart");
       const homeCardAddToCartImg = document.createElement("img");
       homeCardAddToCartImg.src = "./Assets/cartButton.png";
@@ -88,3 +90,14 @@ req.addEventListener("readystatechange", () => {
     }
   }
 });
+
+// change main cover
+let cover = document.getElementById("TopCover");
+let i = 1;
+setInterval(() => {
+  cover.src = `../Assets/home${i}.png`;
+  if (i == 3) {
+    i = 0;
+  }
+  i++;
+}, 2000);
