@@ -27,6 +27,11 @@ latestreq.addEventListener("readystatechange", () => {
       const latestCard = document.createElement("div");
       latestCard.classList.add("latestCard");
 
+      const sale = document.createElement("span");
+      sale.textContent = "% " + product.discountPercentage;
+      sale.classList.add("saleBadge");
+      latestCard.appendChild(sale);
+
       const latestCardThumb = document.createElement("div");
       latestCardThumb.classList.add("latestCard_Thumb");
       const latestCardThumbImg = document.createElement("img");

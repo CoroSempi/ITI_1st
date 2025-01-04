@@ -8,12 +8,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
     <title>ITI Market</title>
+    <link rel="stylesheet" href="../Styles/dialogue.css" />
     <link rel="stylesheet" href="../Styles/latest.css" />
+
   </head>
   <body>
+    <!-- CartDialogue----------------------------->
+    <div class="BackDark">
+      <div class="CartDialogue">
+        <img class="CartDialogue_Bg" src="../Assets/dialogueBg.png" />
+        <p class="CartDialogue_title">Item Added to Cart Successfully!</p>
+        <p class="CartDialogue_text">
+          Your selection is now safe and sound in your cart. Ready to check out
+          or continue shopping?
+        </p>
+        <img class="CartDialogue_icon" src="../Assets/CartDialogueIcon.png" />
+        <button id="yourCart">Your Cart</button>
+      </div>
+    </div>
+    <!---------------------------------------------->
+
     <!-- Header ---------------------------------------------------->
     <header>
       <!-- logo -->
@@ -54,17 +70,17 @@
       <!---->
       <!-- title -->
       <div class="title">
+        <div>.</div>
         <h1>Latest Deals in ITI Market</h1>
       </div>
       <!-------------------------------------------------------------->
 
       <!-- tabs -->
-      <div class="categories">
-      </div>
-    
+      <div class="categories"></div>
+
       <!-------------------------------------------------------------->
       <!-- show products -->
-      <div id="products"></div> 
+      <div id="products"></div>
       <!-------------------------------------------------------------->
     </main>
 
@@ -82,12 +98,12 @@
         <img
           src="../Assets/customerService.png"
           alt="customerService"
-          width="30px"
-        />
+          width="30px" />
       </div>
       <p>© 2023-2024 by ITIMarket.com</p>
     </footer>
     <!-------------------------------------------------------------->
+    <script src="../Scripts/Dialogue.js"></script>
     <script src="../Scripts/latest.js"></script>
   </body>
 </html>
