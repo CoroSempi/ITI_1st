@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../Styles/layouts.css" />
+    <link rel="stylesheet" href="../Styles/dialogue.css" />
+    <link rel="stylesheet" href="../Styles/latest.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,6 +14,21 @@
     <title>ITI Market</title>
   </head>
   <body>
+    <!-- CartDialogue----------------------------->
+    <div class="BackDark">
+      <div class="CartDialogue">
+        <img class="CartDialogue_Bg" src="../Assets/dialogueBg.png" />
+        <p class="CartDialogue_title">Item Added to Cart Successfully!</p>
+        <p class="CartDialogue_text">
+          Your selection is now safe and sound in your cart. Ready to check out
+          or continue shopping?
+        </p>
+        <img class="CartDialogue_icon" src="../Assets/CartDialogueIcon.png" />
+        <button id="yourCart">Your Cart</button>
+      </div>
+    </div>
+    <!---------------------------------------------->
+
     <!-- Header ---------------------------------------------------->
     <header>
       <!-- logo -->
@@ -42,7 +59,7 @@
     <nav>
       <a href="../index.html">Home</a>
       <a href="./latest.html">Latest</a>
-      <a class="selected" href="/">Trendy</a>
+      <a href="./trendy.html">Trendy</a>
       <a href="./aboutUs.html">About Us</a>
     </nav>
     <!-------------------------------------------------------------->
@@ -51,6 +68,8 @@
       <!-- backgroubd -->
       <img id="bg" src="../Assets/BG.png" />
       <!---->
+
+      product{id}
     </main>
 
     <!-- Footer ---------------------------------------------------->
@@ -72,6 +91,8 @@
       <p>© 2023-2024 by ITIMarket.com</p>
     </footer>
     <!-------------------------------------------------------------->
+    <script src="../Scripts/SearchBar.js"></script>
+    <script src="../Scripts/Dialogue.js"></script>
+    <script src="../Scripts/latest.js"></script>
   </body>
-  <script src="../Scripts/SearchBar.js"></script>
 </html>

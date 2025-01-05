@@ -27,6 +27,10 @@ latestreq.addEventListener("readystatechange", () => {
       const latestCard = document.createElement("div");
       latestCard.classList.add("latestCard");
 
+      latestCard.addEventListener("click", () => {
+        window.location.href = `./Pages/productDetails.html?id=${product.id}`;
+      });
+
       const sale = document.createElement("span");
       sale.textContent = "% " + product.discountPercentage;
       sale.classList.add("saleBadge");
