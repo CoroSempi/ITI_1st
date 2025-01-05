@@ -11,6 +11,11 @@ req.addEventListener("readystatechange", () => {
     data = data.products;
     for (let i = 0; i < data.length; i++) {
       const homeCard = document.createElement("div");
+
+      homeCard.addEventListener("click", () => {
+        window.location.href = `./Pages/productDetails.html?id=${data[i].id}`;
+      });
+
       homeCard.classList.add("homeCard");
       const homeCardThumb = document.createElement("div");
       homeCardThumb.classList.add("homeCard_Thumb");

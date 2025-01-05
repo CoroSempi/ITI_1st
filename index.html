@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="./Assets/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./Styles/layouts.css" />
     <link rel="stylesheet" href="./Styles/home.css" />
@@ -49,11 +50,14 @@
     <header>
       <!-- logo -->
       <img src="./Assets/LOGO.png" height="50px" alt="ITI Market Logo" />
+
       <!-- searchBar -->
       <div id="searchBar">
-        <input type="search" placeholder="Search" />
+        <input id="searchInput" type="search" placeholder="Search" />
         <img src="./Assets/search.png" />
+        <div id="searchResults"></div>
       </div>
+
       <!-- headrActions -->
       <div id="headrActions">
         <span id="cartCounter">1</span>
@@ -132,6 +136,7 @@
     </footer>
     <!-------------------------------------------------------------->
   </body>
+  <script src="./Scripts/SearchBar.js"></script>
   <script src="./Scripts/Dialogue.js"></script>
   <script src="./Scripts/HomeTopCard.js"></script>
   <script src="./Scripts/HomeLatestSlider.js"></script>
