@@ -75,8 +75,8 @@ function fetchProductsByCategory(category) {
   var xhr = new XMLHttpRequest();
   var url =
     category === "all"
-      ? "https://dummyjson.com/products?sortBy=title&order=asc&limit=60" // Fetch all products if "all" is selected
-      : `https://dummyjson.com/products/category/${category}?sortBy=title&order=asc`; // Fetch products from the selected category
+      ? "https://dummyjson.com/products?sortBy=rate&order=asc&limit=60" // Fetch all products if "all" is selected
+      : `https://dummyjson.com/products/category/${category}?sortBy=rating&order=asc`; // Fetch products from the selected category
   xhr.open("GET", url);
 
   // Event listener for state change of the request
@@ -153,8 +153,8 @@ function fetchProductsByCategory(category) {
   var xhr = new XMLHttpRequest();
   var url =
     category === "all"
-    ? "https://dummyjson.com/products?sortBy=title&order=asc&limit=60" 
-    : `https://dummyjson.com/products/category/${category}?sortBy=title&order=asc`; 
+    ? "https://dummyjson.com/products?sortBy=Rating&order=asc&limit=60" 
+    : `https://dummyjson.com/products/category/${category}?sortBy=rating&order=asc`; 
   xhr.open("GET", url);
 
   xhr.onreadystatechange = function () {
