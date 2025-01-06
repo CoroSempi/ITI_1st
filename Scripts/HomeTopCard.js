@@ -63,7 +63,8 @@ topReq.addEventListener("readystatechange", () => {
       const homeCardBottom = document.createElement("div");
       homeCardBottom.classList.add("homeCard_bottom");
       const homeCardAddToCart = document.createElement("button");
-      homeCardAddToCart.addEventListener("click", () => {
+      homeCardAddToCart.addEventListener("click", (e) => {
+        e.stopPropagation();
         SignDialogue();
       });
       homeCardAddToCart.classList.add("homeCard_AddToCart");

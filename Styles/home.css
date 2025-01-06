@@ -1,15 +1,14 @@
 /* Global Styles */
-
 * {
   padding: 0px;
   margin: 0px;
 }
 
 /* Top Section Styles */
-
 #Top {
   position: relative;
   height: 820px;
+  min-width: 100%;
 }
 
 #TopTitle {
@@ -29,9 +28,13 @@
   height: 500px;
   object-fit: cover;
 }
+#TopCover_span {
+  font-size: 25px;
+}
 
 #topContainer {
   width: 100%;
+  max-width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -266,4 +269,172 @@
 .right-arrow {
   top: 45%;
   right: 10px;
+}
+
+/* phone */
+@media (max-width: 480px) {
+  #Top {
+    height: 450px;
+  }
+
+  #TopTitle {
+    top: 20px;
+    left: 20px;
+    font-weight: 600;
+    font-size: 20px;
+  }
+  #TopCover {
+    height: 200px;
+  }
+
+  #TopCover_span {
+    font-size: 12px;
+  }
+  #topContainer {
+    gap: 10px;
+    top: 100px;
+  }
+
+  .homeCard {
+    width: 30%;
+    max-height: 500px;
+  }
+
+  .homeCard_Thumb {
+    min-height: 40px;
+  }
+
+  .homeCard_Top {
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  .homeCard_Top span {
+    max-height: 30px;
+  }
+
+  .homeCard_OverView {
+    font-size: 10px;
+    max-height: 30px;
+  }
+
+  .homeCard_BrandCategoryStock {
+    gap: 2px;
+    font-size: 9px;
+  }
+
+  .homeCard_BrandCategoryStock img {
+    width: 2px;
+  }
+
+  .homeCard_AddToCart {
+    padding: 10px 5px;
+    font-size: 12px;
+    font-weight: 400;
+    width: 100%;
+  }
+
+  .homeCard_AddToCart img {
+    width: 12px;
+  }
+
+  .homeCard_bottom {
+    margin-top: 2px;
+    flex-direction: column;
+    align-items: start;
+    font-size: 10px;
+  }
+
+  .Rate {
+    font-size: inherit;
+    font-weight: 500;
+  }
+
+  .homeCard_Stat img {
+    width: 20px;
+  }
+
+  #latestTag {
+    font-size: 15px;
+  }
+}
+
+/* mid */
+@media (max-width: 800px) and (min-width: 480px) {
+  #Top {
+    height: 700px;
+  }
+
+  #TopTitle {
+    top: 30px;
+    left: 30px;
+    font-weight: 800;
+    font-size: 40px;
+  }
+  #TopCover {
+    height: 400px;
+  }
+
+  #TopCover_span {
+    font-size: 20px;
+  }
+
+  #topContainer {
+    width: 100%;
+    gap: 5px;
+    top: 180px;
+  }
+
+  .homeCard {
+    width: 30%;
+    max-height: 500px;
+  }
+
+  .homeCard_Thumb {
+    min-height: 250px;
+  }
+
+  .homeCard_Top {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .homeCard_Top span {
+    max-height: 200px;
+    overflow: visible;
+  }
+
+  .homeCard_OverView {
+    font-size: 15px;
+  }
+
+  .homeCard_BrandCategoryStock {
+    font-size: 10px;
+  }
+
+  .homeCard_BrandCategoryStock img {
+    width: 2px;
+  }
+
+  .homeCard_AddToCart {
+    padding: 10px 5px;
+    font-size: 15px;
+    font-weight: 550;
+    width: 100%;
+  }
+
+  .homeCard_bottom {
+    flex-direction: column;
+    align-items: start;
+    font-size: 16px;
+  }
+
+  .Rate {
+    font-size: inherit;
+    font-weight: 500;
+  }
+
+  .homeCard_Stat img {
+    width: 30px;
+  }
 }

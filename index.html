@@ -49,7 +49,11 @@
     <!-- Header ---------------------------------------------------->
     <header>
       <!-- logo -->
-      <img src="./Assets/LOGO.png" height="50px" alt="ITI Market Logo" />
+      <img
+        id="logo"
+        src="./Assets/LOGO.png"
+        height="50px"
+        alt="ITI Market Logo" />
 
       <!-- searchBar -->
       <div id="searchBar">
@@ -87,12 +91,19 @@
       <!-- background -->
       <img id="bg" src="./Assets/BG.png" alt="Background Image" />
       <!---->
+      <!-- phoneSearchBar -->
+      <div id="phoneSearchBar">
+        <input id="searchInputMobile" type="search" placeholder="Search" />
+        <img src="./Assets/search.png" />
+        <div id="searchResults2"></div>
+      </div>
+
       <!-- products -->
       <div id="Top">
         <img id="TopCover" src="./Assets/home2.png" alt="Promotion Image" />
         <div id="TopTitle">
           <span>Top in ITI Market</span>
-          <span style="font-size: 25px">Super Flash Sale 50% Off</span>
+          <span id="TopCover_span">Super Flash Sale 50% Off</span>
         </div>
         <div id="topContainer"></div>
       </div>
@@ -127,10 +138,7 @@
           interface that makes shopping for your favorite tech devices
           effortless and enjoyable.
         </p>
-        <img
-          src="./Assets/customerService.png"
-          alt="Customer Service"
-          width="30px" />
+        <img id="cus" src="./Assets/customerService.png" alt="Customer Service" />
       </div>
       <p>&copy; 2023-2024 by ITIMarket.com</p>
     </footer>
