@@ -1,14 +1,14 @@
-const req = new XMLHttpRequest();
-var data;
-req.open("GET", "https://dummyjson.com/products/category/laptops?limit=3");
-req.send();
-
+const topReq = new XMLHttpRequest();
+topReq.open("GET", "https://dummyjson.com/products/category/laptops?limit=3");
+topReq.send();
+let data;
 const container = document.getElementById("topContainer");
 
-req.addEventListener("readystatechange", () => {
-  if (req.readyState === 4 && req.status === 200) {
-    data = JSON.parse(req.response);
+topReq.addEventListener("readystatechange", () => {
+  if (topReq.readyState === 4 && topReq.status === 200) {
+    data = JSON.parse(topReq.response);
     data = data.products;
+
     for (let i = 0; i < data.length; i++) {
       const homeCard = document.createElement("div");
 

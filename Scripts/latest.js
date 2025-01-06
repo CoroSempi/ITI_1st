@@ -152,20 +152,20 @@ function displayCategories(categories) {
 
 // Function to fetch products based on the selected category
 function fetchProductsByCategory(category) {
-  var xhr = new XMLHttpRequest();
+  var latestPageReq = new XMLHttpRequest();
   var url =
     category === "all"
-    ? "https://dummyjson.com/products?sortBy=title&order=asc&limit=60" 
-    : `https://dummyjson.com/products/category/${category}?sortBy=title&order=asc`; 
-  xhr.open("GET", url);
+      ? "https://dummyjson.com/products?sortBy=title&order=asc&limit=60"
+      : `https://dummyjson.com/products/category/${category}?sortBy=title&order=asc`;
+  latestPageReq.open("GET", url);
 
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {
-      var response = JSON.parse(xhr.responseText);
+  latestPageReq.onreadystatechange = function () {
+    if (latestPageReq.readyState === 4 && latestPageReq.status >= 200) {
+      var response = JSON.parse(latestPageReq.responseText);
       displayProducts(response.products || []);
     }
   };
-  xhr.send();
+  latestPageReq.send();
 }
 
 // Function to display products

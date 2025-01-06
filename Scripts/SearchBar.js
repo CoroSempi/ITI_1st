@@ -36,13 +36,13 @@ function renderSearchResults(products) {
   products.forEach((product) => {
     const productElement = document.createElement("span");
     productElement.addEventListener("click", () => {
-      const productId = product.id;
       const url = new URL(window.location.href);
       const pathname = url.pathname;
-      const productDetailsPath = pathname.includes("index.html")
-        ? "./Pages/productDetails.html"
-        : "./productDetails.html";
-      window.location.href = `${productDetailsPath}?id=${productId}`;
+      console.log(pathname);
+      const productDetailsPath = pathname.includes("Pages")
+        ? "./productDetails.html"
+        : "./Pages/productDetails.html";
+      window.location.href = `${productDetailsPath}?id=${product.id}`;
     });
     productElement.classList.add("searchResults_item");
     productElement.textContent = product.title;

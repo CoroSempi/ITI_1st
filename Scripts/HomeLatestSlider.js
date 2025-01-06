@@ -3,11 +3,8 @@ let latestContainer = document.getElementById("latestContainer");
 let currentIndex = 0;
 
 const latestreq = new XMLHttpRequest();
-var data;
-latestreq.open(
-  "GET",
-  "https://dummyjson.com/products?sortBy=Category&order=asc"
-);
+
+latestreq.open("GET", "https://dummyjson.com/products?sortBy=title&order=asc");
 latestreq.send();
 
 function moveSlide(direction) {
@@ -21,6 +18,7 @@ function moveSlide(direction) {
 
 latestreq.addEventListener("readystatechange", () => {
   if (latestreq.readyState === 4 && latestreq.status === 200) {
+    console.log("hi");
     data = JSON.parse(latestreq.response);
     data = data.products;
     data.forEach((product) => {
@@ -32,7 +30,7 @@ latestreq.addEventListener("readystatechange", () => {
       });
 
       const sale = document.createElement("span");
-      sale.textContent = "% " + product.discountPercentage;
+      sale.textContent = `% ${product.discountPercentage}`;
       sale.classList.add("saleBadge");
       latestCard.appendChild(sale);
 
@@ -50,15 +48,17 @@ latestreq.addEventListener("readystatechange", () => {
       const latestCardTopTitle = document.createElement("span");
       latestCardTopTitle.textContent = product.title;
       const latestCardTopPrice = document.createElement("span");
-      latestCardTopPrice.textContent = "$" + product.price;
+      latestCardTopPrice.textContent = `$${product.price}`;
       latestCardTop.appendChild(latestCardTopTitle);
       latestCardTop.appendChild(latestCardTopPrice);
       latestCard.appendChild(latestCardTop);
 
       const latestCardOverView = document.createElement("p");
       latestCardOverView.classList.add("latestCard_OverView");
-      latestCardOverView.textContent =
-        product.description.substring(0, 50) + ".. .";
+      latestCardOverView.textContent = `${product.description.substring(
+        0,
+        50
+      )}...`;
       latestCard.appendChild(latestCardOverView);
 
       const latestCardBrandCategoryStock = document.createElement("div");
@@ -75,7 +75,7 @@ latestreq.addEventListener("readystatechange", () => {
       latestCardCategoryIcon.src = "./Assets/Vector.png";
       const latestCardStock = document.createElement("span");
       latestCardStock.textContent =
-        product.stock > 0 ? "Instock" : "outOfStock";
+        product.stock > 0 ? "In stock" : "Out of stock";
       latestCardStock.style.color = product.stock > 0 ? "green" : "red";
       latestCardBrandCategoryStock.appendChild(latestCardBrand);
       latestCardBrandCategoryStock.appendChild(latestCardBrandIcon);

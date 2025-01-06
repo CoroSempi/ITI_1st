@@ -1,10 +1,73 @@
-#wishList {
-  margin: 40px;
+#topProfile {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  flex-direction: column;
-  max-width: 80%;
+  margin: 0px 40px;
+}
+
+#homeButton {
+  width: 150px;
+  cursor: pointer;
+}
+
+#userSection {
+  display: flex;
+
+  align-items: center;
+  gap: 10px;
+}
+#userSection img {
+  width: 65px;
+  height: 65px;
+}
+
+#userSection_name {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+#userSection div p {
+  padding: 0px;
+  margin: 0px;
+}
+
+#wishTag {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0px 20px;
+}
+
+#wishList {
+  margin: 0px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#pofileCart {
+  margin: 0px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  position: relative;
+}
+
+#pofileCart a {
+  font-weight: 700;
+  text-decoration: none;
+  color: #c3262d;
+  position: absolute;
+  font-size: 15px;
+  bottom: -30px;
+  right: 0px;
+  z-index: 10;
 }
 
 .wishListItem {
@@ -13,19 +76,18 @@
   align-items: center;
   background-color: white;
   height: 200px;
-  margin: 10px;
+
   padding: 20px;
   box-sizing: border-box;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
   color: #2c2c2c;
-  max-width: 100%;
-  width: 100%;
+  width: 49%;
   position: relative;
 }
 .wishListItem_button {
   position: absolute;
-  right: 30px;
-  top: 30px;
+  right: 10px;
+  top: 10px;
 }
 .wishListItem_details {
   display: flex;
