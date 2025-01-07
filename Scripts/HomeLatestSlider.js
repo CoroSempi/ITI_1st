@@ -85,8 +85,9 @@ latestreq.addEventListener("readystatechange", () => {
       latestCard.appendChild(latestCardBrandCategoryStock);
 
       const latestCardAddToCart = document.createElement("button");
-      latestCardAddToCart.addEventListener("click", () => {
+      latestCardAddToCart.addEventListener("click", (e) => {
         CartDialogue();
+        e.stopPropagation();
       });
       latestCardAddToCart.classList.add("latestCard_AddToCart");
       const latestCardAddToCartIcon = document.createElement("img");

@@ -25,12 +25,7 @@ header {
   flex-direction: column;
 }
 
-#phoneSearchBar {
-  display: none;
-}
-
-#searchResults,
-#searchResults2 {
+#searchResults {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
   padding-top: 30px;
   padding-bottom: 10px;
@@ -53,8 +48,7 @@ header {
   background-color: #facdcf;
 }
 
-#searchBar img,
-#phoneSearchBar img {
+#searchBar img {
   z-index: 2;
   width: 30px;
   position: absolute;
@@ -62,8 +56,7 @@ header {
   right: 10px;
 }
 
-#searchBar input,
-#phoneSearchBar input {
+#searchBar input {
   z-index: 2;
   width: 100%;
   height: 45px;
@@ -72,10 +65,6 @@ header {
   background-color: #fafafa;
   padding: 0px 10px;
   font-weight: 500;
-}
-
-#phoneSearchBar input {
-  width: 98%;
 }
 
 #headrActions {
@@ -182,95 +171,26 @@ footer div {
   justify-content: space-between;
   align-items: center;
 }
-
-/* phone */
-@media (max-width: 480px) {
-  nav {
-    gap: 20px;
-    margin-bottom: 10px;
-  }
-
-  nav a {
-    font-size: 13px;
-    font-weight: 500;
-  }
-
-  #logo {
-    height: 40px;
-  }
-
-  #searchBar {
-    display: none;
-  }
-
-  #phoneSearchBar {
-    width: 100%;
-    box-sizing: border-box;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-bottom: 20px;
-  }
-
-  #headrActions img {
-    width: 28px;
-  }
-
-  footer {
-    padding: 20px;
-  }
-  footer div p {
-    font-size: 10px;
-  }
-
-  #headrActions a {
-    font-weight: 600;
-    font-size: 15px;
-  }
-
-  footer img {
-    width: 60px;
-  }
-
-  footer div p {
-    font-size: 10px;
-  }
-
-  footer p {
-    font-size: 12px;
-  }
-
-  #cus {
-    width: 20px;
-  }
+#res {
+  display: none;
 }
 
-/* mid */
-@media (max-width: 800px) and (min-width: 480px) {
-  #searchBar {
+/* phone */
+@media (max-width: 990px) {
+  body * {
     display: none;
   }
-  #logo {
-    height: 40px;
-  }
-  #phoneSearchBar {
-    width: 100%;
-    box-sizing: border-box;
-    position: relative;
+
+  body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-
-    margin-bottom: 20px;
+    height: 100vh;
   }
 
-  footer {
-    padding: 10px;
-  }
-  footer div p {
-    font-size: 12px;
+  #res {
+    display: block;
+    max-width: 90%;
+    max-height: 80%;
   }
 }

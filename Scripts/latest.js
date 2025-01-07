@@ -76,7 +76,7 @@ function fetchProductsByCategory(category) {
   var url =
     category === "all"
       ? "https://dummyjson.com/products?sortBy=title&order=asc&limit=60" // Fetch all products if "all" is selected
-      : `https://dummyjson.com/products/category/${category}?sortBy=title&order=asc`; // Fetch products from the selected category
+      : `https://dummyjson.com/products/category/${category}?sortBy=title&order=asc&limit=60`; // Fetch products from the selected category
   xhr.open("GET", url);
 
   // Event listener for state change of the request
@@ -230,7 +230,8 @@ function displayProducts(products) {
     latestCard.appendChild(latestCardBrandCategoryStock);
 
     const latestCardAddToCart = document.createElement("button");
-    latestCardAddToCart.addEventListener("click", () => {
+    latestCardAddToCart.addEventListener("click", (e) => {
+      e.stopPropagation();
       CartDialogue();
     });
     latestCardAddToCart.classList.add("latestCard_AddToCart");
