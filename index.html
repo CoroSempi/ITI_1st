@@ -4,21 +4,20 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="./Assets/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- styles -->
-    <link rel="stylesheet" href="./Styles/home.css" />
     <link rel="stylesheet" href="./Styles/layouts.css" />
+    <link rel="stylesheet" href="./Styles/home.css" />
     <link rel="stylesheet" href="./Styles/dialogue.css" />
-    <!-- poppins font -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet" />
-
     <title>ITI Market</title>
+  
   </head>
   <body>
-    <!-- CartDialogue----------------------------->
+    <!-- CartDialogue-----------------------------> 
     <div class="BackDark">
       <div class="CartDialogue">
         <img class="CartDialogue_Bg" src="./Assets/dialogueBg.png" />
@@ -33,7 +32,7 @@
     </div>
     <!---------------------------------------------->
 
-    <!-- SignInDialogue----------------------------->
+    <!-- SignInDialogue-----------------------------> 
     <div class="BackDark2">
       <div class="CartDialogue">
         <img class="CartDialogue_Bg" src="./Assets/dialogueBg.png" />
@@ -43,7 +42,7 @@
           exclusive benefits.
         </p>
         <img class="CartDialogue_icon" src="./Assets/SignDialogueIcon.png" />
-        <button id="yourCart">Sign In</button>
+        <button id="signIn">Sign In</button>
       </div>
     </div>
     <!---------------------------------------------->
@@ -51,11 +50,7 @@
     <!-- Header ---------------------------------------------------->
     <header>
       <!-- logo -->
-      <img
-        id="logo"
-        src="./Assets/LOGO.png"
-        height="50px"
-        alt="ITI Market Logo" />
+      <img src="./Assets/LOGO.png" height="50px" alt="ITI Market Logo" />
 
       <!-- searchBar -->
       <div id="searchBar">
@@ -66,7 +61,7 @@
 
       <!-- headrActions -->
       <div id="headrActions">
-        <span id="cartCounter">1</span>
+        <span id="cartCounter">0</span>
         <a href="./Pages/cart.html">
           <img src="./Assets/cart.png" alt="Cart" />
         </a>
@@ -89,22 +84,16 @@
     </nav>
     <!-------------------------------------------------------------->
 
-    <!-- responsive warning -->
-    <img id="res" src="./Assets/responsive.png" />
-    <!--  -->
-
-    
     <main>
       <!-- background -->
       <img id="bg" src="./Assets/BG.png" alt="Background Image" />
       <!---->
-
       <!-- products -->
       <div id="Top">
         <img id="TopCover" src="./Assets/home2.png" alt="Promotion Image" />
         <div id="TopTitle">
           <span>Top in ITI Market</span>
-          <span id="TopCover_span">Super Flash Sale 50% Off</span>
+          <span style="font-size: 25px">Super Flash Sale 50% Off</span>
         </div>
         <div id="topContainer"></div>
       </div>
@@ -140,16 +129,17 @@
           effortless and enjoyable.
         </p>
         <img
-          id="cus"
           src="./Assets/customerService.png"
-          alt="Customer Service" />
+          alt="Customer Service"
+          width="30px" />
       </div>
       <p>&copy; 2023-2024 by ITIMarket.com</p>
     </footer>
     <!-------------------------------------------------------------->
+
+    <script src="./Scripts/SearchBar.js"></script>
+    <script src="./Scripts/Dialogue.js"></script>
+<script src="./Scripts/homecart.js"></script>
+
   </body>
-  <script src="./Scripts/SearchBar.js"></script>
-  <script src="./Scripts/Dialogue.js"></script>
-  <script src="./Scripts/HomeTopCard.js"></script>
-  <script src="./Scripts/HomeLatestSlider.js"></script>
 </html>
