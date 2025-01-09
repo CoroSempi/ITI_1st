@@ -1,205 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="../Assets/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../Styles/layouts.css" />
-    <link rel="stylesheet" href="../Styles/home.css" />
-    <link rel="stylesheet" href="../Styles/dialogue.css" />
+    <link rel="stylesheet" href="../Styles/cart.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
     <title>ITI Market</title>
-    <style>
-      .cart-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 35px; /
-      }
-      .cart-item-img {
-        width: 150px;
-        height: 100px;
-        margin-right: 20px;
-        padding: 5px;
-        border-radius: 8px;
-      }
-      .cart-item-info {
-        display: flex;
-        flex-direction: column;
-      }
-      .remove-btn {
-        background-color: #e63946;
-        color: #fff;
-        border: none;
-        padding: 8px 12px;
-        margin-top: 10px;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: transform 0.3s ease, background-color 0.3s ease;
-        width: 100%; /* لجعل الزر بنفس العرض مع باقي الأزرار */
-        box-sizing: border-box; /* تأكد من أن الزر لا يتخطى العرض المخصص له */
-      }
-      .remove-btn:hover {
-        transform: scale(1.1);
-        background-color: #b3001b;
-      }
-      .cart-summary {
-        margin-top: 20px;
-        font-size: 18px;
-      }
-      main {
-        display: flex;
-        justify-content: space-between;
-        padding: 20px;
-        gap: 20px;
-      }
-      .products-section {
-        flex: 3;
-      }
-      .product-card {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border: 1px solid #b90202;
-        border-radius: 8px;
-        padding: 10px;
-        margin-bottom: 30px; /* إضافة مسافة بين كل منتج */
-        background-color: #fff;
-      }
-      .product-card img {
-        width: 80px;
-        height: 80px;
-        object-fit: cover;
-        border-radius: 8px;
-      }
-      .product-info {
-        flex: 1;
-        margin-left: 10px;
-      }
-      .product-title {
-        font-size: 16px;
-        font-weight: 600;
-        margin-bottom: 5px;
-      }
-      .product-price {
-        color: #e63946;
-        font-weight: 500;
-      }
-      .quantity-controls {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        margin-top: 10px;
-      }
-      .quantity-controls button {
-        background-color: #a22626;
-        color: #fff;
-        border: none;
-        padding: 10px 15px;
-        border-radius: 6px;
-        cursor: pointer;
-      }
-      .quantity-controls button:hover {
-        transform: scale(1.1);
-        background-color: #7c0c0c;
-      }
-      .summary-section {
-        flex: 1;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 20px;
-        background-color: #fff;
-      }
-      .summary-section h3 {
-        margin-bottom: 20px;
-      }
-      .summary-item {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 10px;
-      }
-      .checkout-btn {
-        background-color: #a22626;
-        color: #fff;
-        border: red;
-        width: 100%;
-        padding: 5px;
-        font-size: 40px;
-        border-radius: 4px;
-        cursor: pointer;
-        margin-top: 50px;
-        transition: transform 0.3s ease, background-color 0.3s ease;
-      }
-      .checkout-btn:hover {
-        transform: scale(1.1);
-        background-color: #7c0c0c;
-      }
+  </head>
+  <body>
+    <!-- Header ---------------------------------------------------->
+    <header>
+      <!-- logo -->
+      <img src="../Assets/LOGO.png" height="50px" alt="" />
+      <!-- searchBar -->
+      <div id="searchBar">
+        <input id="searchInput" type="search" placeholder="Search" />
+        <img src="../Assets/search.png" />
+        <div id="searchResults"></div>
+      </div>
+      <!-- headrActions -->
+      <div id="headrActions">
+        <span id="cartCounter">1</span>
+        <a href="./cart.html">
+          <img src="../Assets/cart.png" alt="profile" />
+        </a>
 
-      .remove{
-        margin-top: 10px;
-        padding: 5px 15px;
-        background-color: #a22626;
-        color: #fff;
-        border: red;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: transform 0.3s ease, background-color 0.3s ease;
-      }
-      .remove:hover {
-        transform: scale(1.1);
-        background-color: #7c0c0c;
-      }
-    </style>
-</head>
-<body>
-  <header>
-    <img src="../Assets/LOGO.png" height="50px" alt="ITI Market Logo" />
-    <div id="headrActions">
-      <span id="cartCounter">0</span>
-      <a href="../Pages/profile.html">
-        <img src="../Assets/profile.png" alt="Profile" />
-      </a>
-      <a href="../Pages/signIn.html">Log Out</a>
-    </div>
-  </header>
-  <nav>
-    <a class="selected" href="/">Home</a>
-    <a href="../Pages/latest.html">Latest</a>
-    <a href="../Pages/trendy.html">Trendy</a>
-    <a href="../Pages/aboutUs.html">About Us</a>
-  </nav>
+        <a href="./profile.html">
+          <img src="../Assets/profile.png" alt="profile" />
+        </a>
 
+        <a href="./signIn.html">LogOut</a>
+      </div>
+    </header>
+    <!-------------------------------------------------------------->
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../Pages/latest.html">Latest</a>
+      <a href="../Pages/trendy.html">Trendy</a>
+      <a href="../Pages/aboutUs.html">About Us</a>
+    </nav>
 
-  <main id="product-list">
-    <h5 style="text-align: center; font-size: 16px; color: #444; margin-top: 10px;">
-      "Your cart is ready! 🛍 Complete your order now!"
-    </h5>
-    
-   
-    <div id="cart-items"></div>
-    <div class="cart-summary">
-        <p id="total-price">Total: $0</p>
-        <button onclick="checkout()" class="checkout-btn">Checkout</button>
-    </div>
-  </main>
-  <footer>
-    <div>
-      <img src="../Assets/FooterLOGO.png" width="130px" alt="Footer Logo" />
-      <p>
-        Welcome to ITI Market, your premier destination for all things tech!
-        Our e-commerce website is designed with a focus on delivering an
-        exceptional user experience, featuring a sleek and modern user
-        interface that makes shopping for your favorite tech devices
-        effortless and enjoyable.
-      </p>
-      <img src="../Assets/customerService.png" alt="Customer Service" width="30px" />
-    </div>
-    <p>&copy; 2023-2024 by ITIMarket.com</p>
-  </footer>
-  <script src="../Scripts/Checkout.js"></script>
-</body>
+    <!-- responsive warning -->
+    <img id="res" src="../Assets/responsive.png" />
+    <!--  -->
+
+    <main>
+      <!-- backgroubd -->
+      <img id="bg" src="../Assets/BG.png" />
+      <!---->
+
+      <!-- cartList -->
+      <div id="cartList"></div>
+
+      <!-- orderSummary -->
+      <div id="orderSummary">
+        <p class="orderSummary_title">Order Summary</p>
+
+        <div class="orderSummary_item">
+          <span>Subtotal</span> <span id="subTotal">$ 201</span>
+        </div>
+
+        <div class="orderSummary_item">
+          <span>Discount(10%)</span> <span id="afterDiscount">$ 21</span>
+        </div>
+
+        <div class="orderSummary_item">
+          <span>Delivery Fee</span> <span>$ 20</span>
+        </div>
+
+        <div class="orderSummary_item">
+          <input type="text" placeholder="Promo Voucher" />
+          <button>Apply</button>
+        </div>
+        <hr />
+        <div class="orderSummary_item">
+          <span>Total</span> <span id="finalTotal">$ 21</span>
+        </div>
+
+        <button id="checkout">Checkout</button>
+      </div>
+    </main>
+
+    <footer>
+      <div>
+        <img src="../Assets/FooterLOGO.png" width="130px" alt="Footer Logo" />
+        <p>
+          Welcome to ITI Market, your premier destination for all things tech!
+          Our e-commerce website is designed with a focus on delivering an
+          exceptional user experience, featuring a sleek and modern user
+          interface that makes shopping for your favorite tech devices
+          effortless and enjoyable.
+        </p>
+        <img
+          src="../Assets/customerService.png"
+          alt="Customer Service"
+          width="30px" />
+      </div>
+      <p>&copy; 2023-2024 by ITIMarket.com</p>
+    </footer>
+  </body>
+  <script src="../Scripts/Cart.js"></script>
+  <script src="../Scripts/SearchBar.js"></script>
 </html>

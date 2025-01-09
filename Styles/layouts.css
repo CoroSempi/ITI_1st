@@ -176,7 +176,7 @@ footer div {
 }
 
 /* phone */
-@media (max-width: 990px) {
+@media (max-width: 450px) {
   body * {
     display: none;
   }

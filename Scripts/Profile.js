@@ -1,8 +1,11 @@
-let homeButton = document.getElementById("homeButton");
+let userName = document.getElementById("userSection_name");
+userName.textContent = localStorage.getItem("userName") || "userName";
 
+let homeButton = document.getElementById("homeButton");
 homeButton.addEventListener("click", () => {
   window.location.href = "../index.html";
 });
+
 
 const container = document.getElementById("wishList");
 const container2 = document.getElementById("pofileCart");

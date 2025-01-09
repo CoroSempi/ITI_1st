@@ -12,7 +12,6 @@
 
 #userSection {
   display: flex;
-
   align-items: center;
   gap: 10px;
 }
@@ -76,7 +75,6 @@
   align-items: center;
   background-color: white;
   height: 200px;
-
   padding: 20px;
   box-sizing: border-box;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
@@ -84,10 +82,16 @@
   width: 49%;
   position: relative;
 }
+
+.wishListItem img {
+  width: 100%;
+}
+
 .wishListItem_button {
   position: absolute;
   right: 10px;
   top: 10px;
+  max-width: 30px;
 }
 .wishListItem_details {
   display: flex;

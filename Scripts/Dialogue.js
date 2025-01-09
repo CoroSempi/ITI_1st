@@ -1,6 +1,10 @@
 let cartDialogue = document.querySelector(".BackDark");
 let signDialogue = document.querySelector(".BackDark2");
+let yourCart = document.getElementById("yourCart");
 
+yourCart.onclick = () => {
+  location.href = "../Pages/cart.html";
+};
 function CartDialogue() {
   cartDialogue.style.display = "flex";
   setTimeout(() => {
