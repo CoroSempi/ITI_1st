@@ -139,14 +139,16 @@ function moveSlide(direction) {
 
 latestreq.addEventListener("readystatechange", () => {
   if (latestreq.readyState === 4 && latestreq.status === 200) {
-    data = JSON.parse(latestreq.response);
-    data = data.products;
-    data.forEach((product) => {
+    let latestData = JSON.parse(latestreq.response);
+    latestData = latestData.products;
+    latestData.forEach((product) => {
       const latestCard = document.createElement("div");
       latestCard.classList.add("latestCard");
 
-      latestCard.addEventListener("click", () => {
-        window.location.href = `./Pages/productDetails.html?id=${topData[i].id}`;
+      latestCard.addEventListener("click", (e) => {
+        console.log("hi");
+        e.stopPropagation();
+        window.location.href = `./Pages/productDetails.html?id=${latestData[i].id}`;
       });
 
       const sale = document.createElement("span");
