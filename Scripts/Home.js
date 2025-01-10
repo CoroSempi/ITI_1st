@@ -146,9 +146,8 @@ latestreq.addEventListener("readystatechange", () => {
       latestCard.classList.add("latestCard");
 
       latestCard.addEventListener("click", (e) => {
-        console.log("hi");
         e.stopPropagation();
-        window.location.href = `./Pages/productDetails.html?id=${latestData[i].id}`;
+        window.location.href = `./Pages/productDetails.html?id=${product.id}`;
       });
 
       const sale = document.createElement("span");

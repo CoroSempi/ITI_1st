@@ -92,11 +92,15 @@ hr {
   background-color: #a4252b;
 }
 
+#cartList {
+  margin-bottom: 40px;
+}
+
 .cartCard {
   background-color: white;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  gap: 10px;
   align-items: center;
   height: 200px;
   padding: 10px;

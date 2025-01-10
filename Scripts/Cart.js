@@ -70,6 +70,7 @@ function displayCart() {
         <p class="cartCard_details_title">${product.item.title}</p>
         <p>$ ${product.item.price}</p>
         <div class="cartCard_details_BrandCategoryStock">
+        
           <span>${product.item.brand}</span>
           <img src="../Assets/Vector.png" />
           <span>${product.item.category}</span>
