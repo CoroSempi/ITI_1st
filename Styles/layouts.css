@@ -1,5 +1,7 @@
-body {
-  margin: 0;
+/* Global Styles */
+* {
+  padding: 0px;
+  margin: 0px;
   font-family: "poppins", sans-serif;
 }
 

@@ -84,7 +84,8 @@
 }
 
 .wishListItem img {
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .wishListItem_button {
@@ -127,6 +128,9 @@
   font-weight: 500;
 }
 
+.wishListItem_details_BrandCategoryStock img {
+  width: 3px;
+}
 @media (max-width: 768px) {
   #wishList {
     max-width: 100%;

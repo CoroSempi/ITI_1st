@@ -45,11 +45,7 @@ function renderSearchResults(products) {
 }
 
 function navigateToProductDetails(productId) {
-  const pathname = window.location.pathname;
-  const productDetailsPath = pathname.includes("Pages")
-    ? "./productDetails.html"
-    : "./Pages/productDetails.html";
-  window.location.href = `${productDetailsPath}?id=${productId}`;
+  window.location.href = `../Pages/productDetails.html?id=${productId}`;
 }
 
 // Handle the Header Actions section
@@ -57,21 +53,22 @@ function navigateToProductDetails(productId) {
 let cartIcon = document.getElementById("cartIcon");
 let profileIcon = document.getElementById("profileIcon");
 let log = document.getElementById("log");
-let cartCounter = document.getElementById("cartCounter");
+let cartCounterr = document.getElementById("cartCounter");
+
 log.addEventListener("click", () => {
   window.location.href = "../Pages/signIn.html";
   localStorage.removeItem("userName");
-  console.log("hi");
+  localStorage.removeItem("cartProducts");
 });
 let user = localStorage.getItem("userName");
 if (user) {
   log.textContent = `Log Out`;
   profileIcon.style.display = "block";
   cartIcon.style.display = "block";
-  cartCounter.style.display = "absoulte";
+  cartCounterr.style.display = "absoulte";
 } else {
   log.textContent = `Log In`;
   profileIcon.style.display = "none";
   cartIcon.style.display = "none";
-  cartCounter.style.display = "none";
+  cartCounterr.style.display = "none";
 }

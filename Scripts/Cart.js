@@ -1,20 +1,33 @@
+function cartCounter() {
+  let counter = document.getElementById("cartCounter");
+  let cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
+  counter.textContent = cartProducts.length;
+}
+cartCounter();
+
 function addToCart(item, quantity = 1) {
+  if (!localStorage.getItem("userName")) {
+    return "not Signed";
+  }
   let cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
   let product = cartProducts.find((ele) => ele.item.id === item.id);
   if (product) {
-    if (product.quantity < 10) {
-      product.quantity += quantity;
-    } else {
+    if (product.quantity + quantity > 10) {
       alert("You can't add more than 10 items");
       return false;
     }
+    product.quantity += quantity;
   } else {
+    if (quantity > 10) {
+      alert("You can't add more than 10 items");
+      return false;
+    }
     cartProducts.push({ item, quantity });
+    cartCounter();
   }
   localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
   return true;
 }
-
 function updateCart(id, quantity = 1) {
   let cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
   let product = cartProducts.find((ele) => ele.item.id == id);
@@ -39,11 +52,9 @@ function updateCart(id, quantity = 1) {
 
 function removeFromCart(productId) {
   let cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
-
   cartProducts = cartProducts.filter((product) => {
     return product.item.id != productId;
   });
-
   localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
   cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
   console.log(cartProducts);
@@ -57,7 +68,32 @@ function checkout() {
   }
 }
 
+//Cart Summary ================
+let subTotal = document.getElementById("subTotal");
+let afterDiscount = document.getElementById("afterDiscount");
+let finalTotal = document.getElementById("finalTotal");
+
+function orderSummary() {
+  console.log("hi");
+  const cartItems = JSON.parse(localStorage.getItem("cartProducts")) || [];
+  let subTotal_ = 0;
+
+  for (const product of cartItems) {
+    subTotal_ += product.item.price * product.quantity;
+    console.log(subTotal_);
+  }
+  afterDiscount.textContent = "$ " + Math.ceil(subTotal_ * 0.1);
+  subTotal.textContent = "$ " + Math.ceil(subTotal_);
+  finalTotal.textContent = subTotal_
+    ? "$ " + (Math.ceil(subTotal_ * 0.9) + 20)
+    : "$ " + 0;
+}
+orderSummary();
+
+// displayCart ================
 function displayCart() {
+  cartCounter();
+  orderSummary();
   const cartList = document.getElementById("cartList");
   cartList.innerHTML = "";
   const cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
@@ -65,13 +101,15 @@ function displayCart() {
     const cartCard = document.createElement("div");
     cartCard.classList.add("cartCard");
     cartCard.innerHTML = `
-      <img class="cartCard_thumb" src=${product.item.thumbnail} height="300" alt="item" />
+      <img class="cartCard_thumb" src=${
+        product.item.thumbnail
+      } height="300" alt="item" />
       <div class="cartCard_details">
         <p class="cartCard_details_title">${product.item.title}</p>
         <p>$ ${product.item.price}</p>
         <div class="cartCard_details_BrandCategoryStock">
         
-          <span>${product.item.brand}</span>
+          <span>${product.item.brand ? product.item.brand : "Brandless"}</span>
           <img src="../Assets/Vector.png" />
           <span>${product.item.category}</span>
           <img src="../Assets/Vector.png" />
@@ -87,7 +125,9 @@ function displayCart() {
           <input value="${product.quantity}" type="text" />
           <button class="plus" data-id="${product.item.id}">+</button>
         </div>
-        <img  width="25px" src="../Assets/delete.png" class="delete" data-id="${product.item.id}" />
+        <img  width="25px" src="../Assets/delete.png" class="delete" data-id="${
+          product.item.id
+        }" />
       </div>
       <div class="saleBadge">${product.item.discountPercentage}%</div>
     `;
@@ -125,5 +165,4 @@ function displayCart() {
     });
   });
 }
-
 displayCart();

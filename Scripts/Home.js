@@ -66,8 +66,12 @@ topReq.addEventListener("readystatechange", () => {
 
       homeCardAddToCart.addEventListener("click", (event) => {
         event.stopPropagation();
-        if (addToCart(topData[i])) {
+        let res = addToCart(topData[i]);
+        console.log(res);
+        if (res === true) {
           CartDialogue();
+        } else if (res === "not Signed") {
+          SignDialogue();
         }
       });
       homeCardAddToCart.classList.add("homeCard_AddToCart");
@@ -111,11 +115,6 @@ setInterval(() => {
   i++;
 }, 2000);
 
-// Initialize cart counter
-
-let cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
-cartCounter.textContent = cartProducts.length || 0;
-
 let latestProducts = document.getElementById("latestProducts");
 let latestContainer = document.getElementById("latestContainer");
 let currentIndex = 0;
@@ -138,20 +137,19 @@ latestreq.addEventListener("readystatechange", () => {
   if (latestreq.readyState === 4 && latestreq.status === 200) {
     let latestData = JSON.parse(latestreq.response);
     latestData = latestData.products;
-    latestData.forEach((product) => {
+
+    latestData.forEach(function (product) {
       const latestCard = document.createElement("div");
       latestCard.classList.add("latestCard");
 
-      latestCard.addEventListener("click", (e) => {
-        e.stopPropagation();
+      latestCard.addEventListener("click", () => {
         window.location.href = `./Pages/productDetails.html?id=${product.id}`;
       });
 
       const sale = document.createElement("span");
-      sale.textContent = `% ${product.discountPercentage}`;
+      sale.textContent = "% " + product.discountPercentage;
       sale.classList.add("saleBadge");
       latestCard.appendChild(sale);
-
       const latestCardThumb = document.createElement("div");
       latestCardThumb.classList.add("latestCard_Thumb");
       const latestCardThumbImg = document.createElement("img");
@@ -166,36 +164,61 @@ latestreq.addEventListener("readystatechange", () => {
       const latestCardTopTitle = document.createElement("span");
       latestCardTopTitle.textContent = product.title;
       const latestCardTopPrice = document.createElement("span");
-      latestCardTopPrice.textContent = `$${product.price}`;
+      latestCardTopPrice.textContent = "$" + product.price;
       latestCardTop.appendChild(latestCardTopTitle);
       latestCardTop.appendChild(latestCardTopPrice);
       latestCard.appendChild(latestCardTop);
 
       const latestCardOverView = document.createElement("p");
       latestCardOverView.classList.add("latestCard_OverView");
-      latestCardOverView.textContent = `${product.description}`;
+      latestCardOverView.textContent =
+        product.description.substring(0, 50) + ".. .";
       latestCard.appendChild(latestCardOverView);
 
-      const latestCardBottom = document.createElement("div");
-      latestCardBottom.classList.add("latestCard_Bottom");
+      const latestCardBrandCategoryStock = document.createElement("div");
+      latestCardBrandCategoryStock.classList.add(
+        "latestCard_BrandCategoryStock"
+      );
+      const latestCardBrand = document.createElement("span");
+      latestCardBrand.textContent = product.brand;
+      const latestCardBrandIcon = document.createElement("img");
+      latestCardBrandIcon.src = "../Assets/Vector.png";
+      const latestCardCategory = document.createElement("span");
+      latestCardCategory.textContent = product.category;
+      const latestCardCategoryIcon = document.createElement("img");
+      latestCardCategoryIcon.src = "../Assets/Vector.png";
+      const latestCardStock = document.createElement("span");
+      latestCardStock.textContent =
+        product.stock > 0 ? "Instock" : "outOfStock";
+      latestCardStock.style.color = product.stock > 0 ? "green" : "red";
+      latestCardBrandCategoryStock.appendChild(latestCardBrand);
+      latestCardBrandCategoryStock.appendChild(latestCardBrandIcon);
+      latestCardBrandCategoryStock.appendChild(latestCardCategory);
+      latestCardBrandCategoryStock.appendChild(latestCardCategoryIcon);
+      latestCardBrandCategoryStock.appendChild(latestCardStock);
+      latestCard.appendChild(latestCardBrandCategoryStock);
+
       const latestCardAddToCart = document.createElement("button");
       latestCardAddToCart.addEventListener("click", (event) => {
         event.stopPropagation();
-        if (addToCart(product)) {
+        let res = addToCart(product);
+        console.log(res);
+        if (res === true) {
           CartDialogue();
+        } else if (res === "not Signed") {
+          SignDialogue();
         }
       });
-
       latestCardAddToCart.classList.add("latestCard_AddToCart");
-      const latestCardAddToCartImg = document.createElement("img");
-      latestCardAddToCartImg.src = "./Assets/cartButton.png";
-      latestCardAddToCartImg.alt = "";
+      const latestCardAddToCartIcon = document.createElement("img");
+      latestCardAddToCartIcon.src = "../Assets/cartButtonLatest.png";
+      latestCardAddToCartIcon.alt = "Cart Icon";
       const latestCardAddToCartText = document.createElement("span");
       latestCardAddToCartText.textContent = "Add to Cart";
-      latestCardAddToCart.appendChild(latestCardAddToCartImg);
+      latestCardAddToCart.appendChild(latestCardAddToCartIcon);
       latestCardAddToCart.appendChild(latestCardAddToCartText);
-      latestCardBottom.appendChild(latestCardAddToCart);
-      latestCard.appendChild(latestCardBottom);
+      latestCard.appendChild(latestCardAddToCart);
+
       latestContainer.appendChild(latestCard);
     });
   }

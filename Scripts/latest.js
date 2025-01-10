@@ -230,9 +230,15 @@ function displayProducts(products) {
     latestCard.appendChild(latestCardBrandCategoryStock);
 
     const latestCardAddToCart = document.createElement("button");
-    latestCardAddToCart.addEventListener("click", (e) => {
-      e.stopPropagation();
-      CartDialogue();
+    latestCardAddToCart.addEventListener("click", (event) => {
+      event.stopPropagation();
+      let res = addToCart(product);
+      console.log(res);
+      if (res === true) {
+        CartDialogue();
+      } else if (res === "not Signed") {
+        SignDialogue();
+      }
     });
     latestCardAddToCart.classList.add("latestCard_AddToCart");
     const latestCardAddToCartIcon = document.createElement("img");
