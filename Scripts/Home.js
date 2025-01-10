@@ -8,9 +8,6 @@ topReq.addEventListener("readystatechange", () => {
   if (topReq.readyState === 4 && topReq.status === 200) {
     let topData = JSON.parse(topReq.response);
     topData = topData.products;
-
-    console.log(topData);
-
     for (let i = 0; i < topData.length; i++) {
       const homeCard = document.createElement("div");
 
@@ -115,7 +112,7 @@ setInterval(() => {
 }, 2000);
 
 // Initialize cart counter
-const cartCounter = document.getElementById("cartCounter");
+
 let cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
 cartCounter.textContent = cartProducts.length || 0;
 

@@ -80,7 +80,7 @@ header {
   cursor: pointer;
 }
 
-#headrActions a {
+#headrActions p {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,6 +88,7 @@ header {
   font-weight: 600;
   color: #c3262d;
   font-size: 19px;
+  cursor: pointer;
   transition: color 0.2s ease;
 }
 

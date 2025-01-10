@@ -1,5 +1,17 @@
 [
-  { "username": "seif", "password": "123456" },
-  { "username": "ali", "passwod": "123456" },
-  { "username": "Bakhit", "passwod": "abcde" }
+  {
+    "userName": "seif",
+    "email": "corosempi@gmail.com",
+    "password": "123456"
+  },
+  {
+    "userName": "ali",
+    "email": "ali@gmail.com",
+    "passwrod": "123456"
+  },
+  {
+    "userName": "Bakhiti",
+    "email": "Bakhiti@gmail.com",
+    "passwrod": "abcde"
+  }
 ]

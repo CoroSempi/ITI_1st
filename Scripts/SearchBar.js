@@ -51,3 +51,27 @@ function navigateToProductDetails(productId) {
     : "./Pages/productDetails.html";
   window.location.href = `${productDetailsPath}?id=${productId}`;
 }
+
+// Handle the Header Actions section
+
+let cartIcon = document.getElementById("cartIcon");
+let profileIcon = document.getElementById("profileIcon");
+let log = document.getElementById("log");
+let cartCounter = document.getElementById("cartCounter");
+log.addEventListener("click", () => {
+  window.location.href = "../Pages/signIn.html";
+  localStorage.removeItem("userName");
+  console.log("hi");
+});
+let user = localStorage.getItem("userName");
+if (user) {
+  log.textContent = `Log Out`;
+  profileIcon.style.display = "block";
+  cartIcon.style.display = "block";
+  cartCounter.style.display = "absoulte";
+} else {
+  log.textContent = `Log In`;
+  profileIcon.style.display = "none";
+  cartIcon.style.display = "none";
+  cartCounter.style.display = "none";
+}

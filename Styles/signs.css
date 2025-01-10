@@ -1,0 +1,173 @@
+body {
+  margin: 0px;
+  height: 95vh;
+  font-family: "Poppins";
+  width: 95%;
+  display: flex;
+}
+main {
+  margin: auto;
+  margin-top: 40px;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  height: 90vh;
+}
+
+.left-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 60%;
+  height: 100%;
+  padding: 20px;
+  position: relative;
+}
+
+.left-section img {
+  width: 70%;
+  height: 100%;
+}
+
+.left-section_logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.left-section_logo img {
+  width: 150px;
+}
+
+#skip {
+  position: absolute;
+  width: 120px;
+  height: 25px;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.right-section {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+
+.formTop {
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.formTop h2 {
+  padding: 0px;
+  margin: 0px;
+  color: #900d0d;
+  font-size: 35px;
+}
+
+.formTop p {
+  text-align: center;
+  width: 70%;
+  padding: 0px;
+  margin: 0px;
+  color: #9c9999;
+  font-size: 16px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 80%;
+}
+
+.formItem {
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+}
+
+.formItem input {
+  padding: 10px;
+  height: 25px;
+  border-radius: 10px;
+  border: solid 1px rgb(218, 216, 216);
+}
+
+#signIn {
+  font-size: 15px;
+  font-weight: 600;
+  width: 100%;
+  height: 45px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  background-color: #c01717;
+  transition: all 0.7s;
+}
+
+#signIn:hover {
+  background-color: #940f0f;
+}
+
+.btn-google {
+  color: rgba(1, 1, 1, 0.7);
+  gap: 10px;
+  font-size: 15px;
+  border-radius: 10px;
+  background: none;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  width: 100%;
+  border: solid 1px rgb(218, 216, 216);
+}
+
+.btn-google img {
+  width: 30px;
+}
+
+#no-account {
+  font-size: 15px;
+  border-radius: 10px;
+  background: none;
+  min-height: 45px;
+  width: 80%;
+  border: solid 1px #900d0d;
+  color: #900d0d;
+  transition: all 1s;
+}
+#no-account:hover {
+  background-color: #900d0d;
+  color: white;
+}
+
+#signMessage {
+  color: red;
+  font-size: 15px;
+  font-weight: 500;
+  width: 100%;
+}
