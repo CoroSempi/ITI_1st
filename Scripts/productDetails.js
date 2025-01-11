@@ -15,12 +15,13 @@ xhr.onreadystatechange = function(){
         const products=JSON.parse(xhr.response);
         console.log(products);
         displayproducts(products);
+           displayreviews(products)
+
         AddtoCart.addEventListener("click",function(){
             var quantity=parseInt(quantityDisplay.value);
             console.log(quantity);      
             addToCart(products,quantity);
-          CartDialogue()
-
+            CartDialogue()
      }
        );    
     }
@@ -128,7 +129,7 @@ function displayproducts(products){
             for (let i = 0; i < images.length; i++) {
             const img = document.createElement("img");
             img.src = images[i];
-            img.height="150";
+            img.height="100";
             img.width="100";
             img.style.border="solid 1px gray"
             img.style.marginLeft="10px"
@@ -142,6 +143,7 @@ function displayproducts(products){
             
             gallery.style.display = "none";
         }
+      
         
     }
     //add to cart 
@@ -161,7 +163,8 @@ function displayproducts(products){
             quantitydiv.classList.add("quantity-Counter")
              quantitydiv.innerHTML =`<button id="decrease-btn">-</button>
             <input value="${1}" type="text" id="quantity" />
-             <button id="increase-btn"">+</button>`
+             <button id="increase-btn"">+</button>
+             `
              cartDetails.appendChild(quantitydiv);
             const quantityDisplay = document.getElementById("quantity");
              const decreaseBtn = document.getElementById("decrease-btn");
@@ -182,4 +185,55 @@ function displayproducts(products){
           quantityDisplay.value = currentValue;
       }
   });
+ 
+function displayreviews(products){
+      var reviews=products.reviews;
+     console.log(reviews);
+       for(let i=0;i<reviews.length;i++){
+         var container1=document.createElement("div")
+         container1.classList="content"
+         var nameContainer=document.createElement("h3")
+         var nameContainervalue=document.createTextNode(reviews[i].reviewerName)
+         nameContainer.appendChild(nameContainervalue);
+         container1.appendChild(nameContainer);
+        //  var dot1=document.createElement("img");
+        //  dot1.sre="../Assets/BG.png";
+        //  container1.appendChild(dot1);
+         var emailContainer=document.createElement("h5");
+         var emailContainervalue=document.createTextNode(reviews[i].reviewerEmail )
+         emailContainer.appendChild(emailContainervalue);
+         container1.appendChild(emailContainer);
+        //  var dot2=document.createElement("img");
+        //  dot2.sre="../Assets/BG.png";
+        // dot2.width="5px"
+        //  dot2.height="5px"
+        //  container1.appendChild(dot2)
+         var dateContainer=document.createElement("p");
+          //convert Iso Date to local Date
+         var isodate=new Date(reviews[i].date);
+         var date=isodate.toLocaleDateString();
+        var dateContainervalue=document.createTextNode(date)
+         dateContainer.appendChild(dateContainervalue)
+          container1.appendChild(dateContainer);
+          var starcontainer=document.createElement("span");
+          starcontainer.classList="star-container"
+         var starspan1=document.createElement("img")
+          starspan1.src="../Assets/star.png"
+          starspan1.width="20"
+          starcontainer.appendChild(starspan1)
+          var ratingspan1=document.createElement("span")
+          var rating1=document.createTextNode(reviews[i].rating)
+          ratingspan1.appendChild(rating1)
+          starcontainer.appendChild(ratingspan1)
+          container1.appendChild(starcontainer)
+           var reviewContent= document.getElementById("reviews-content")
+           reviewContent.appendChild(container1);
+            var comment=document.createElement("div");
+            comment.classList="comment"
+             var commentValue=document.createTextNode(reviews[i].comment)
+            comment.appendChild(commentValue);
+            container1.appendChild(comment);
+       }
+}
+
  

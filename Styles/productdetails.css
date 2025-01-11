@@ -1,3 +1,4 @@
+
 #productdetails{
     
     width: 50%;
@@ -20,9 +21,8 @@
 }
 #gallery img{
     cursor: pointer;
-    
+    width: 70px;
 }
-
 #clear{
     clear: both;
 }
@@ -82,3 +82,64 @@
     padding-top: 4px; 
    
   }
+  #reviews{
+    position: relative;
+    /* background-color: green; */
+    height: 150px;
+    top: 400px;
+  }
+  #reviews-title{
+    position: absolute;
+    /* background-color: aqua; */
+    height: 50px;
+    width: 250px;
+    margin-left: 20px;
+  /* margin-top: 100px; */
+
+  }
+  #reviews-title img{
+    float: left;
+    padding-top:10px ;
+    padding-right: 5px;
+  }
+  #reviews-content{
+  /* background-color: #c3262d; */
+    max-height: 150px;
+    width: 85%;
+  position: absolute;
+  top:100px;
+  margin-left: 100px;
+  }
+  .content{
+    position: relative;
+    border: 1px solid gray;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  .content h3{
+    padding-left: 10px;
+    float: left;
+    padding-right: 12px;
+  }
+  .content h5{
+    float: left;
+    padding-right: 12px;
+  }
+  .content p{
+    padding-top: 2px;
+  }
+  .star-container{
+    position: absolute;
+    top: 15px;
+    margin-left: 750px;
+  }
+  .comment {
+    
+     padding: 10px;
+
+  } 
+  
+
+ 
