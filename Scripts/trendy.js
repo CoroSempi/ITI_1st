@@ -4,186 +4,108 @@ var productsContainer = document.getElementById("products");
 // Get the container for displaying categories
 var categoriesContainer = document.querySelector(".categories");
 
-// Function to fetch the list of categories
+// Function to fetch the list of categories from the API
 function fetchCategories() {
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "https://dummyjson.com/products/category-list");
 
   // Event listener for state change of the request
   xhr.onreadystatechange = function () {
-    // Check if the request is complete and successful
+    // When the request is complete and successful
     if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {
-      // Parse the response text into JSON format
-      var categories = JSON.parse(xhr.responseText);
-      // Display the fetched categories in the UI
-      displayCategories(categories);
-      // Fetch and display all products by default
-      fetchProductsByCategory("all");
+      var categories = JSON.parse(xhr.responseText); // Parse the response to get categories
+      displayCategories(categories); // Call function to display categories
+      fetchProductsByCategory("all"); // Fetch products for the "all" category
     }
   };
 
-  // Send the request to the server
-  xhr.send();
+  xhr.send(); // Send the request
 }
 
-// Function to display the list of categories
+// Function to display the list of categories in the UI
 function displayCategories(categories) {
-  // Add the "All Products" category as the default active tab
+  // Add a "All Products" category as the default active category
   categoriesContainer.innerHTML = `
     <div class="category active" id="all">All Products</div>
   `;
 
-  // Display up to 8 categories from the list
-  categories.slice(0, 4).forEach(function (category) {
-    // Create a new category tab element
-    const categoryTab = document.createElement("div");
-    categoryTab.className = "category";
-    categoryTab.id = category;
-    categoryTab.textContent = category;
+  // Loop through the categories and display each as a clickable tab
+  categories.slice(0, 9).forEach(function (category) {
+    var categoryTab = document.createElement("div");
+    categoryTab.className = "category"; // Add class for styling
+    categoryTab.id = category; // Set the category name as the tab's ID
+    categoryTab.textContent = category; // Set the category name as text
 
-    // Add a click event listener to each category tab
+    // Event listener to handle category tab click
     categoryTab.addEventListener("click", function () {
-      // Remove the active class from all tabs
+      // Remove active class from all category tabs
       document.querySelectorAll(".category").forEach(function (tab) {
         tab.classList.remove("active");
       });
-      // Add the active class to the clicked tab
-      categoryTab.classList.add("active");
+      categoryTab.classList.add("active"); // Add active class to clicked tab
 
-      // Fetch products based on the selected category
+      // Fetch products for the selected category
       fetchProductsByCategory(categoryTab.id);
     });
 
-    // Append the category tab to the container
+    // Append the category tab to the categories container
     categoriesContainer.appendChild(categoryTab);
   });
 
-  // Add a click event listener to the "All Products" tab
+  // Event listener for the "All Products" category to show all products
   document.getElementById("all").addEventListener("click", function () {
-    // Remove the active class from all tabs
     document.querySelectorAll(".category").forEach(function (tab) {
-      tab.classList.remove("active");
+      tab.classList.remove("active"); // Remove active class from all tabs
     });
-    // Add the active class to the "All Products" tab
-    this.classList.add("active");
-    // Fetch all products
-    fetchProductsByCategory("all");
+    this.classList.add("active"); // Add active class to "All Products" tab
+    fetchProductsByCategory("all"); // Fetch all products
   });
 }
+
 // Function to fetch products based on the selected category
 function fetchProductsByCategory(category) {
   var xhr = new XMLHttpRequest();
+  // If category is "all", fetch all products; otherwise, fetch products for a specific category
   var url =
     category === "all"
-      ? "https://dummyjson.com/products?sortBy=title&order=asc&limit=60" // Fetch all products if "all" is selected
-      : `https://dummyjson.com/products/category/${category}?sortBy=title&order=asc`; // Fetch products from the selected category
+      ? "https://dummyjson.com/products?sortBy=title&order=asc&limit=60"
+      : `https://dummyjson.com/products/category/${category}?sortBy=title&order=asc&limit=60`;
+
   xhr.open("GET", url);
 
   // Event listener for state change of the request
   xhr.onreadystatechange = function () {
-    // Check if the request is complete and successful
+    // When the request is complete and successful
     if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {
-      // Parse the response text into JSON format
-      var response = JSON.parse(xhr.responseText);
-      // Display the fetched products in the UI
-      displayProducts(response.products || []);
+      var response = JSON.parse(xhr.responseText); // Parse the response to get products
+      displayProducts(response.products || []); // Call function to display the products
     }
   };
 
-  // Send the request to the server
-  xhr.send();
-}
-// Get the container for displaying products
-var productsContainer = document.getElementById("products");
-
-// Get the container for displaying categories
-var categoriesContainer = document.querySelector(".categories");
-
-// Function to fetch the list of categories
-function fetchCategories() {
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", "https://dummyjson.com/products/category-list");
-
-  // Event listener for state change of the request
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 300) {
-      var categories = JSON.parse(xhr.responseText);
-      displayCategories(categories);
-      fetchProductsByCategory("all");
-    }
-  };
-  xhr.send();
+  xhr.send(); // Send the request
 }
 
-// Function to display the list of categories
-function displayCategories(categories) {
-  categoriesContainer.innerHTML = `
-    <div class="category active" id="all">All Products</div>
-  `;
-
-  categories.slice(0, 9).forEach(function (category) {
-    var categoryTab = document.createElement("div");
-    categoryTab.className = "category";
-    categoryTab.id = category;
-    categoryTab.textContent = category;
-
-    categoryTab.addEventListener("click", function () {
-      document.querySelectorAll(".category").forEach(function (tab) {
-        tab.classList.remove("active");
-      });
-      categoryTab.classList.add("active");
-
-      fetchProductsByCategory(
-        categoryTab.id === "all" ? "all" : categoryTab.id
-      );
-    });
-
-    categoriesContainer.appendChild(categoryTab);
-  });
-
-  document.getElementById("all").addEventListener("click", function () {
-    document.querySelectorAll(".category").forEach(function (tab) {
-      tab.classList.remove("active");
-    });
-    this.classList.add("active");
-    fetchProductsByCategory("all");
-  });
-}
-
-// Function to fetch products based on the selected category
-function fetchProductsByCategory(category) {
-  var trendPageReq = new XMLHttpRequest();
-  var url =
-    category === "all"
-      ? "https://dummyjson.com/products?sortBy=rating&order=asc&limit=60"
-      : `https://dummyjson.com/products/category/${category}?sortBy=rating&order=asc`;
-  trendPageReq.open("GET", url);
-
-  trendPageReq.onreadystatechange = function () {
-    if (trendPageReq.readyState === 4 && trendPageReq.status >= 200) {
-      var response = JSON.parse(trendPageReq.responseText);
-      displayProducts(response.products || []);
-    }
-  };
-  trendPageReq.send();
-}
-
-// Function to display products
+// Function to display products in the UI
 function displayProducts(products) {
-  productsContainer.innerHTML = "";
+  productsContainer.innerHTML = ""; // Clear any existing products from the container
 
+  // Loop through each product and create a product card
   products.forEach(function (product) {
     const latestCard = document.createElement("div");
-    latestCard.classList.add("latestCard");
+    latestCard.classList.add("latestCard"); // Add class for styling
 
+    // Add event listener to product card for click action
     latestCard.addEventListener("click", () => {
-      window.location.href = `./productDetails.html?id=${product.id}`;
+      window.location.href = `./productDetails.html?id=${product.id}`; // Navigate to the product details page
     });
 
+    // Add discount percentage to the product card
     const sale = document.createElement("span");
     sale.textContent = "% " + product.discountPercentage;
     sale.classList.add("saleBadge");
     latestCard.appendChild(sale);
+
+    // Create and display the product thumbnail
     const latestCardThumb = document.createElement("div");
     latestCardThumb.classList.add("latestCard_Thumb");
     const latestCardThumbImg = document.createElement("img");
@@ -193,6 +115,7 @@ function displayProducts(products) {
     latestCardThumb.appendChild(latestCardThumbImg);
     latestCard.appendChild(latestCardThumb);
 
+    // Create and display the product title and price
     const latestCardTop = document.createElement("div");
     latestCardTop.classList.add("latestCard_Top");
     const latestCardTopTitle = document.createElement("span");
@@ -203,41 +126,37 @@ function displayProducts(products) {
     latestCardTop.appendChild(latestCardTopPrice);
     latestCard.appendChild(latestCardTop);
 
+    // Display a brief overview of the product description
     const latestCardOverView = document.createElement("p");
     latestCardOverView.classList.add("latestCard_OverView");
     latestCardOverView.textContent =
-      product.description.substring(0, 50) + ".. .";
+      product.description.substring(0, 50) + ".. ."; // Show only the first 50 characters of the description
     latestCard.appendChild(latestCardOverView);
 
+    // Display product brand, category, and stock availability
     const latestCardBrandCategoryStock = document.createElement("div");
     latestCardBrandCategoryStock.classList.add("latestCard_BrandCategoryStock");
     const latestCardBrand = document.createElement("span");
     latestCardBrand.textContent = product.brand;
-    const latestCardBrandIcon = document.createElement("img");
-    latestCardBrandIcon.src = "../Assets/Vector.png";
     const latestCardCategory = document.createElement("span");
     latestCardCategory.textContent = product.category;
-    const latestCardCategoryIcon = document.createElement("img");
-    latestCardCategoryIcon.src = "../Assets/Vector.png";
     const latestCardStock = document.createElement("span");
-    latestCardStock.textContent = product.stock > 0 ? "Instock" : "outOfStock";
-    latestCardStock.style.color = product.stock > 0 ? "green" : "red";
+    latestCardStock.textContent = product.stock > 0 ? "Instock" : "outOfStock"; // Show stock status
+    latestCardStock.style.color = product.stock > 0 ? "green" : "red"; // Green if in stock, red if out of stock
     latestCardBrandCategoryStock.appendChild(latestCardBrand);
-    latestCardBrandCategoryStock.appendChild(latestCardBrandIcon);
     latestCardBrandCategoryStock.appendChild(latestCardCategory);
-    latestCardBrandCategoryStock.appendChild(latestCardCategoryIcon);
     latestCardBrandCategoryStock.appendChild(latestCardStock);
     latestCard.appendChild(latestCardBrandCategoryStock);
 
+    // Add "Add to Cart" button to the product card
     const latestCardAddToCart = document.createElement("button");
     latestCardAddToCart.addEventListener("click", (event) => {
-      event.stopPropagation();
-      let res = addToCart(product);
-      console.log(res);
+      event.stopPropagation(); // Prevent click event from bubbling up to the card
+      let res = addToCart(product); // Attempt to add product to cart
       if (res === true) {
-        CartDialogue();
+        CartDialogue(); // Show the cart dialogue if the product is added successfully
       } else if (res === "not Signed") {
-        SignDialogue();
+        SignDialogue(); // Show the sign-in dialogue if the user is not signed in
       }
     });
     latestCardAddToCart.classList.add("latestCard_AddToCart");
@@ -250,8 +169,10 @@ function displayProducts(products) {
     latestCardAddToCart.appendChild(latestCardAddToCartText);
     latestCard.appendChild(latestCardAddToCart);
 
+    // Append the product card to the products container
     productsContainer.appendChild(latestCard);
   });
 }
 
+// Initialize the process by fetching categories when the script runs
 fetchCategories();

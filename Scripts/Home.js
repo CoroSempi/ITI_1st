@@ -67,7 +67,6 @@ topReq.addEventListener("readystatechange", () => {
       homeCardAddToCart.addEventListener("click", (event) => {
         event.stopPropagation();
         let res = addToCart(topData[i]);
-        console.log(res);
         if (res === true) {
           CartDialogue();
         } else if (res === "not Signed") {

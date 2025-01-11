@@ -10,95 +10,92 @@ xhr.send();
 
 xhr.onreadystatechange = function () {
   if (xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 300) {
-    console.log(xhr.response);
-    const products = JSON.parse(xhr.response);
-    console.log(products);
-    displayproducts(products);
-    AddtoCart.addEventListener("click", function () {
-      var quantity = parseInt(quantityDisplay.value);
-      console.log(quantity);
-      // new==========================
-      let res = addToCart(products, quantity);
-      console.log(res);
-      if (res === true) {
-        CartDialogue();
-      } else if (res === "not Signed") {
-        SignDialogue();
+    const product = JSON.parse(xhr.response);
+
+    // wishlist ===================
+    let wishlistButton = document.getElementById("wishlistButton");
+    let wishlistButton_Icon = document.getElementById("wishlistButton_Icon");
+    wishlistButton_Icon.src = wishListExist(product)
+      ? "../Assets/addedToWish.png"
+      : "../Assets/addToWish.png";
+
+    wishlistButton.addEventListener("click", () => {
+      if (addToWishList(product)) {
+        wishlistButton_Icon.src = "../Assets/addedToWish.png";
+        WishListDialogue();
+      } else {
+        wishlistButton_Icon.src = "../Assets/addToWish.png";
       }
     });
+
+    displayproduct(product);
   }
 };
-function displayproducts(products) {
+function displayproduct(product) {
   var productdetails = document.getElementById("productdetails");
   var productimage = document.getElementById("productimage");
 
-  // add element details
+  // top of page
+  let topData = document.getElementById("topData");
+  topData.textContent =
+    product.category + " / " + product.brand + " / " + product.title;
 
+  // add element details
   //title&sale
   var title = document.createElement("div");
-  var txt = document.createTextNode(products.title);
+  var txt = document.createTextNode(product.title);
   title.style.fontWeight = "bold";
   title.style.fontSize = "24px";
   title.style.float = "left";
+
   var sale = document.createElement("span");
   var salenumber = document.createTextNode(
-    products.discountPercentage + "% sale"
+    product.discountPercentage + "% sale"
   );
-  sale.style.border = " 2px";
-  sale.style.borderRadius = "10px";
-  sale.style.marginLeft = "240PX";
-  sale.style.backgroundColor = "pink";
-  sale.style.width = "250px";
-  sale.style.height = "200px";
+  sale.classList.add("sale");
   sale.appendChild(salenumber);
   title.appendChild(txt);
   productdetails.appendChild(title);
   productdetails.appendChild(sale);
   //price
   var price = document.createElement("div");
-  var txt1 = document.createTextNode("$" + products.price);
-  price.style.paddingTop = "30px";
+  var txt1 = document.createTextNode("$" + product.price);
   price.style.fontSize = "28px";
   price.appendChild(txt1);
   productdetails.appendChild(price);
+
   //rating
   var ratingspan = document.createElement("span");
   var starspan = document.createElement("img");
+  ratingspan.classList.add("rate");
   starspan.src = "../Assets/star.png";
-  starspan.width = "15";
+  starspan.width = "30";
   ratingspan.appendChild(starspan);
-  var rating = document.createTextNode(products.rating);
+  var rating = document.createTextNode(product.rating);
   ratingspan.appendChild(rating);
-  // ratingspan.style.paddingTop="25px"
-  ratingspan.style.marginLeft = "500PX";
   productdetails.appendChild(ratingspan);
 
   //brandname,category,availability
   var extradetails = document.createElement("div");
-  extradetails.style.paddingTop = "20px";
+  extradetails.classList.add("extra");
   var vector1 = document.createElement("img");
   vector1.src = "../Assets/Vector.png";
-  vector1.style.paddingLeft = "5px";
-  vector1.style.paddingRight = "5px";
   var vector2 = document.createElement("img");
   vector2.src = "../Assets/Vector.png";
-  vector2.style.paddingLeft = "5px";
-  vector2.style.paddingRight = "5px";
-
-  if (products.brand) {
+  if (product.brand) {
     var brandspan = document.createElement("span");
-    var brand = document.createTextNode(products.brand);
+    var brand = document.createTextNode(product.brand);
     brandspan.appendChild(brand);
     extradetails.appendChild(brandspan);
     extradetails.appendChild(vector1);
   }
 
   var categoryspan = document.createElement("span");
-  var category = document.createTextNode(products.category);
+  var category = document.createTextNode(product.category);
   categoryspan.appendChild(category);
 
   var availabilityspan = document.createElement("span");
-  var availability = document.createTextNode(products.availabilityStatus);
+  var availability = document.createTextNode(product.availabilityStatus);
   availabilityspan.style.color = "green";
   availabilityspan.appendChild(availability);
 
@@ -108,18 +105,72 @@ function displayproducts(products) {
   productdetails.appendChild(extradetails);
 
   var description = document.createElement("div");
-  var txt2 = document.createTextNode(products.description);
+  var txt2 = document.createTextNode(product.description);
   description.style.paddingTop = "30px";
   description.style.fontSize = "larger";
   description.style.color = "gray";
   description.appendChild(txt2);
   productdetails.appendChild(description);
+  //add to cart
+  var cartDetails = document.createElement("div");
+  cartDetails.id = "cart-details";
+  var AddtoCart = document.createElement("button");
+  AddtoCart.classList.add("Addtocart");
+  const AddtoCartImg = document.createElement("img");
+  AddtoCartImg.src = "../Assets/cartButton.png";
+  const AddToCartText = document.createElement("span");
+  AddToCartText.textContent = "Add to Cart";
+
+  AddtoCart.addEventListener("click", function () {
+    var quantity = parseInt(quantityDisplay.value);
+    console.log(quantity);
+    // new==========================
+    let res = addToCart(product, quantity);
+    if (res === true) {
+      CartDialogue();
+    } else if (res === "not Signed") {
+      SignDialogue();
+    }
+  });
+
+  AddtoCart.appendChild(AddtoCartImg);
+  AddtoCart.appendChild(AddToCartText);
+  cartDetails.appendChild(AddtoCart);
+  productdetails.appendChild(cartDetails);
+
+  //   quantatiy
+  var quantitydiv = document.createElement("div");
+  quantitydiv.classList.add("quantity-Counter");
+  quantitydiv.innerHTML = `<button id="decrease-btn">-</button>
+            <input disabled  value="${1}" type="text" id="quantity" />
+             <button id="increase-btn"">+</button>`;
+  cartDetails.appendChild(quantitydiv);
+  const quantityDisplay = document.getElementById("quantity");
+  const decreaseBtn = document.getElementById("decrease-btn");
+  const increaseBtn = document.getElementById("increase-btn");
+
+  // Increase quantity
+  increaseBtn.addEventListener("click", function () {
+    let currentValue = parseInt(quantityDisplay.value);
+    currentValue++;
+    quantityDisplay.value = currentValue;
+  });
+
+  // Decrease quantity
+  decreaseBtn.addEventListener("click", function () {
+    let currentValue = parseInt(quantityDisplay.value);
+    if (currentValue > 1) {
+      currentValue--;
+      quantityDisplay.value = currentValue;
+    }
+  });
+
   //add photo images
 
   const mainImage = document.getElementById("main-img");
   const gallery = document.getElementById("gallery");
 
-  var images = products.images;
+  var images = product.images;
   var productimage = document.createElement("img");
   productimage.src = images[0];
   productimage.height = "300";
@@ -130,10 +181,6 @@ function displayproducts(products) {
     for (let i = 0; i < images.length; i++) {
       const img = document.createElement("img");
       img.src = images[i];
-      img.height = "150";
-      img.width = "100";
-      img.style.border = "solid 1px gray";
-      img.style.marginLeft = "10px";
       gallery.appendChild(img);
 
       img.addEventListener("click", function () {
@@ -143,42 +190,31 @@ function displayproducts(products) {
   } else {
     gallery.style.display = "none";
   }
+
+  //reviews
+
+  let reviews = document.getElementById("reviews");
+  product.reviews.forEach((item) => {
+    const reviews_item = document.createElement("div");
+    reviews_item.classList.add("reviews_item");
+    reviews_item.innerHTML = `
+          <div class="reviews_item_header">
+            <div class="reviews_item_header_Details">
+              <p class="userName">${item.reviewerName}</p>
+              <span class="dot"></span>
+              <p>${item.reviewerEmail}</p>
+              <span class="dot"></span>
+              <p>${item.date.split("T")[0]}</p>
+            </div>
+            <div class="reviews_item_header_Rate">
+              <p>${item.rating}</p>
+              <img src="../Assets/star.png" height="90%" />
+            </div>
+          </div>
+          <div class="reviews_item_content">
+           ${item.comment}
+          </div>`;
+
+    reviews.appendChild(reviews_item);
+  });
 }
-//add to cart
-var cartDetails = document.getElementById("cart-details");
-var AddtoCart = document.createElement("button");
-AddtoCart.classList.add("Addtocart");
-const AddtoCartImg = document.createElement("img");
-AddtoCartImg.src = "../Assets/cartButton.png";
-const AddToCartText = document.createElement("span");
-AddToCartText.textContent = "Add to Cart";
-AddtoCart.appendChild(AddtoCartImg);
-AddtoCart.appendChild(AddToCartText);
-cartDetails.appendChild(AddtoCart);
-
-//   quantatiy
-var quantitydiv = document.createElement("div");
-quantitydiv.classList.add("quantity-Counter");
-quantitydiv.innerHTML = `<button id="decrease-btn">-</button>
-            <input value="${1}" type="text" id="quantity" />
-             <button id="increase-btn"">+</button>`;
-cartDetails.appendChild(quantitydiv);
-const quantityDisplay = document.getElementById("quantity");
-const decreaseBtn = document.getElementById("decrease-btn");
-const increaseBtn = document.getElementById("increase-btn");
-
-// Increase quantity
-
-increaseBtn.addEventListener("click", function () {
-  let currentValue = parseInt(quantityDisplay.value);
-  currentValue++;
-  quantityDisplay.value = currentValue;
-});
-// Decrease quantity
-decreaseBtn.addEventListener("click", function () {
-  let currentValue = parseInt(quantityDisplay.value);
-  if (currentValue > 1) {
-    currentValue--;
-    quantityDisplay.value = currentValue;
-  }
-});

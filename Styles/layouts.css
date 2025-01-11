@@ -179,7 +179,7 @@ footer div {
 }
 
 /* phone */
-@media (max-width: 450px) {
+@media (max-width: 500px) {
   body * {
     display: none;
   }

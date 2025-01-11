@@ -1,6 +1,7 @@
-function cartCounter() {
+function cartCounter(
+  cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || []
+) {
   let counter = document.getElementById("cartCounter");
-  let cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
   counter.textContent = cartProducts.length;
 }
 cartCounter();
@@ -13,17 +14,17 @@ function addToCart(item, quantity = 1) {
   let product = cartProducts.find((ele) => ele.item.id === item.id);
   if (product) {
     if (product.quantity + quantity > 10) {
-      alert("You can't add more than 10 items");
+      MaxWarning();
       return false;
     }
     product.quantity += quantity;
   } else {
     if (quantity > 10) {
-      alert("You can't add more than 10 items");
+      MaxWarning();
       return false;
     }
     cartProducts.push({ item, quantity });
-    cartCounter();
+    cartCounter(cartProducts);
   }
   localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
   return true;
@@ -35,13 +36,12 @@ function updateCart(id, quantity = 1) {
   if (product) {
     if (product.quantity <= 10) {
       product.quantity += quantity;
-      console.log(product.quantity);
       if (product.quantity <= 0) {
         removeFromCart(id);
         return;
       }
     } else {
-      alert("You can't add more than 10 items");
+      MaxWarning();
       return false;
     }
   }
@@ -74,13 +74,11 @@ let afterDiscount = document.getElementById("afterDiscount");
 let finalTotal = document.getElementById("finalTotal");
 
 function orderSummary() {
-  console.log("hi");
   const cartItems = JSON.parse(localStorage.getItem("cartProducts")) || [];
   let subTotal_ = 0;
 
   for (const product of cartItems) {
     subTotal_ += product.item.price * product.quantity;
-    console.log(subTotal_);
   }
   afterDiscount.textContent = "$ " + Math.ceil(subTotal_ * 0.1);
   subTotal.textContent = "$ " + Math.ceil(subTotal_);
@@ -122,7 +120,7 @@ function displayCart() {
       <div class="cartCard_actions">
         <div class="cartCard_actions_counter">
           <button class="minus" data-id="${product.item.id}">-</button>
-          <input value="${product.quantity}" type="text" />
+          <input value="${product.quantity}" disabled  type="text" />
           <button class="plus" data-id="${product.item.id}">+</button>
         </div>
         <img  width="25px" src="../Assets/delete.png" class="delete" data-id="${
@@ -154,7 +152,7 @@ function displayCart() {
       if (quantity < 10) {
         updateCart(id);
       } else {
-        alert("You can't add more than 10 items");
+        MaxWarning();
       }
     });
   });

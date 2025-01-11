@@ -18,6 +18,14 @@
     <title>ITI Market</title>
   </head>
   <body>
+    <!-- MaxWarning----------------------------->
+    <div id="maxWarning">
+      <img src="../Assets/warning.png" alt="" />
+      <div id="loadBg"></div>
+      <div id="load"></div>
+    </div>
+    <!---------------------------------------------->
+
     <!-- CartDialogue----------------------------->
     <div class="BackDark">
       <div class="CartDialogue">
@@ -44,6 +52,23 @@
         </p>
         <img class="CartDialogue_icon" src="../Assets/SignDialogueIcon.png" />
         <button id="signInButton">Sign In</button>
+      </div>
+    </div>
+    <!---------------------------------------------->
+
+    <!-- WishListDialogue----------------------------->
+    <div class="BackDark3">
+      <div class="CartDialogue">
+        <img class="CartDialogue_Bg" src="../Assets/dialogueBg.png" />
+        <p class="CartDialogue_title">
+          Item Added to your Wishlist Successfully!
+        </p>
+        <p class="CartDialogue_text">
+          Your selection is now safe and sound in your Wishlist, you can view it
+          in you profile
+        </p>
+        <img class="CartDialogue_icon" src="../Assets/wishlist.png" />
+        <button id="profile">Your Profile</button>
       </div>
     </div>
     <!---------------------------------------------->
@@ -91,16 +116,35 @@
       <img id="bg" src="../Assets/BG.png" />
       <!---->
 
+      <div class="pageTop">
+        <span class="dot"></span>
+        <p id="topData">adsgdsfva</p>
+      </div>
+
       <div id="product">
-        <div id="productdetails">
-          <div id="cart-details"></div>
-        </div>
+        <div id="productdetails"></div>
         <div id="productimage">
           <div id="main-img"></div>
           <div id="gallery"></div>
         </div>
         <div class="clear"></div>
+
+        <button id="wishlistButton">
+          <img
+            id="wishlistButton_Icon"
+            height="100%"
+            src="../Assets/addToWish.png"
+            alt="" />Add to WishList
+        </button>
       </div>
+
+      <div style="padding: 0px 20px">
+        <div id="reviewsTag">
+          <img height="40px" src="../Assets/tag.png" alt="" />
+          <p>Reviews</p>
+        </div>
+      </div>
+      <div id="reviews"></div>
     </main>
 
     <!-- Footer ---------------------------------------------------->
@@ -122,10 +166,10 @@
       <p>© 2023-2024 by ITIMarket.com</p>
     </footer>
     <!-------------------------------------------------------------->
+    <script src="../Scripts/WishList.js"></script>
     <script src="../Scripts/Dialogue.js"></script>
     <script src="../Scripts/Cart.js"></script>
     <script src="../Scripts/SearchBar.js"></script>
-    <script src="../Scripts/latest.js"></script>
     <script src="../Scripts/productDetails.js"></script>
   </body>
 </html>

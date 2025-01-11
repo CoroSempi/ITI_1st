@@ -165,11 +165,12 @@ hr {
 
 .cartCard_actions_counter {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   border: solid gray 1px;
   height: 40px;
   border-radius: 10px;
+  width: 70px;
 }
 
 .cartCard_actions_counter button {
@@ -178,6 +179,7 @@ hr {
   background: none;
 }
 .cartCard_actions_counter input {
+  background: none;
   border: none;
   width: 20px;
   text-align: center;
