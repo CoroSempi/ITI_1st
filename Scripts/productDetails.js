@@ -18,9 +18,13 @@ xhr.onreadystatechange = function () {
     wishlistButton_Icon.src = wishListExist(product)
       ? "../Assets/addedToWish.png"
       : "../Assets/addToWish.png";
-
+    let ress = addToWishList(product);
     wishlistButton.addEventListener("click", () => {
-      if (addToWishList(product)) {
+      if (ress) {
+        if (ress == "not Signed") {
+          SignDialogue();
+          return;
+        }
         wishlistButton_Icon.src = "../Assets/addedToWish.png";
         WishListDialogue();
       } else {

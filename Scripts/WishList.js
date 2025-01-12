@@ -1,4 +1,7 @@
 function addToWishList(product) {
+ if (!localStorage.getItem("userName")) {
+   return "not Signed";
+ }
   const wishList = JSON.parse(localStorage.getItem("wishList")) || [];
   const existingItemIndex = wishList.findIndex(
     (item) => item.id === product.id

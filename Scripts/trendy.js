@@ -68,8 +68,8 @@ function fetchProductsByCategory(category) {
   // If category is "all", fetch all products; otherwise, fetch products for a specific category
   var url =
     category === "all"
-      ? "https://dummyjson.com/products?sortBy=title&order=asc&limit=60"
-      : `https://dummyjson.com/products/category/${category}?sortBy=title&order=asc&limit=60`;
+      ? "https://dummyjson.com/products?sortBy=rate&order=asc&limit=60"
+      : `https://dummyjson.com/products/category/${category}?sortBy=rate&order=asc&limit=60`;
 
   xhr.open("GET", url);
 
