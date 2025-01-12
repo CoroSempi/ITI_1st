@@ -59,6 +59,7 @@ log.addEventListener("click", () => {
   window.location.href = "../Pages/signIn.html";
   localStorage.removeItem("userName");
   localStorage.removeItem("cartProducts");
+  localStorage.removeItem("wishList");
 });
 let user = localStorage.getItem("userName");
 if (user) {
